@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Главная страница</title>
+		<meta charset="UTF-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<!-- <style>body{opacity: 0;}</style> -->
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css" />
+		<!-- <meta name="robots" content="noindex, nofollow"> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Инициализация кастомного скролла, если у пользователя отключен JS -->
+		<noscript>
+			<style>
+				[data-simplebar] {
+					overflow: auto;
+				}
+			</style>
+		</noscript>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<div class="calculator">
+				<div class="calculator__container _container">
+					<div class="calculator__body">
+						<h2 class="calculator__title">Калькулятор</h2>
+						<div class="calculator__breadcrumbs breadcrumbs">
+							<a href="#">Главная</a>
+							<a href="#">Название раздела</a>
+							<span>Название текущего раздела</span>
+						</div>
+						<div class="calculator__content">
+							<div class="calculator__left">
+								<div class="calculator-form">
+									<form class="calculator-form__form" action="#">
+										<div class="calculator-form__fields">
+											<div class="calculator-form__line">
+												<h3 class="calculator-form__title">Стоимость автомобиля</h3>
+												<div class="calculator-form__price">
+													<input
+														class="calculator-form__price-input input"
+														type="text"
+														value="34 866" />
+													<span>$</span>
+												</div>
+											</div>
+											<div class="calculator-form__line">
+												<h3 class="calculator-form__title">Выбор аукциона</h3>
+												<div class="calculator-form__options options">
+													<div class="calculator-form__option options__item">
+														<input
+															id="option-1"
+															class="options__input"
+															type="radio"
+															value="1"
+															name="option" />
+														<label for="option-1" class="options__label">
+															<span class="options__text">Copart</span>
+														</label>
+													</div>
+													<div class="calculator-form__option options__item">
+														<input
+															id="option-2"
+															class="options__input"
+															checked
+															type="radio"
+															value="2"
+															name="option" />
+														<label for="option-2" class="options__label">
+															<span class="options__text">IAA</span>
+														</label>
+													</div>
+													<div class="calculator-form__option options__item">
+														<input
+															id="option-3"
+															class="options__input"
+															type="radio"
+															value="3"
+															name="option" />
+														<label for="option-3" class="options__label">
+															<span class="options__text">Manheim</span>
+														</label>
+													</div>
+												</div>
+											</div>
+											<div class="calculator-form__line">
+												<h3 class="calculator-form__title">Выбор города (площадки)</h3>
+												<select name="form[]" data-class-modif="form">
+													<option value="" selected>Не выбрано</option>
+													<option value="2">Item 1</option>
+													<option value="3">Item 2</option>
+													<option value="4">Item 3</option>
+													<option value="4">Item 4</option>
+												</select>
+											</div>
+											<div class="calculator-form__line">
+												<h3 class="calculator-form__title">Вид авто</h3>
+												<select name="form[]" data-class-modif="form">
+													<option value="" selected>Не выбрано</option>
+													<option value="2">Item 1</option>
+													<option value="3">Item 2</option>
+													<option value="4">Item 3</option>
+													<option value="4">Item 4</option>
+												</select>
+											</div>
+											<div class="calculator-form__line">
+												<h3 class="calculator-form__title">Тип двигателя</h3>
+												<select name="form[]" data-class-modif="form">
+													<option value="" selected>Не выбрано</option>
+													<option value="2">Item 1</option>
+													<option value="3">Item 2</option>
+													<option value="4">Item 3</option>
+													<option value="4">Item 4</option>
+												</select>
+											</div>
+											<div class="calculator-form__line">
+												<h3 class="calculator-form__title">Возраст авто</h3>
+												<select name="form[]" data-class-modif="form">
+													<option value="" selected>Не выбрано</option>
+													<option value="2">Item 1</option>
+													<option value="3">Item 2</option>
+													<option value="4">Item 3</option>
+													<option value="4">Item 4</option>
+												</select>
+											</div>
+										</div>
+										<div class="calculator-form__actions">
+											<button
+												class="calculator-form__button-submit"
+												type="submit"
+												data-front="Рассчитать стоимость"
+												data-back="Рассчитать стоимость"></button>
+											<button class="calculator-form__button-reset" type="reset">Сбросить</button>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="calculator__right">
+								<div class="calculator-total">
+									<div class="calculator-total__content">
+										<div class="calculator-total__top">
+											<h3 class="calculator-total__title">
+												Итоговая стоимость с доставкой из США
+											</h3>
+											<div class="calculator-total__total-price">~ 58 074 $</div>
+										</div>
+										<div class="calculator-total__sub-text">
+											Цена в рублях не окончательна и может меняться в зависимости от изменений
+											курса доллара
+										</div>
+										<h3 class="calculator-total__title">Расшифровка</h3>
+										<div class="calculator-total__list">
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--red">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span>Стоимость авто в США</span>
+														</span>
+														<span class="calculator-total__item-price">34 866 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--red">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span>Комиссия Bastet Car</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--red">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span>Аукционный сбор</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--green">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span>Доставка + Страхование</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--green">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span>Таможенные сборы</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span>Оформление документов на реэкспорт</span>
+														</span>
+														<span class="calculator-total__item-price">300 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span
+																>Стоимость доставки до РФ и <br />
+																оформление всех документов
+															</span>
+														</span>
+														<span class="calculator-total__item-price">300 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span>Оформление документов на реэкспорт</span>
+														</span>
+														<span class="calculator-total__item-price">300 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span
+																>Стоимость доставки до РФ <br />
+																и оформление всех документов <br />
+															</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span
+																>Стоимость доставки до РФ <br />
+																и оформление всех документов <br />
+															</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span
+																>Стоимость доставки до РФ <br />
+																и оформление всех документов <br />
+															</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span
+																>Стоимость доставки до РФ <br />
+																и оформление всех документов <br />
+															</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span
+																>Стоимость доставки до РФ <br />
+																и оформление всех документов <br />
+															</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span
+																>Стоимость доставки до РФ <br />
+																и оформление всех документов <br />
+															</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span
+																>Стоимость доставки до РФ <br />
+																и оформление всех документов <br />
+															</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+											<div
+												data-spollers
+												class="calculator-total__item calculator-total__item--purple">
+												<details class="calculator-total__item-details">
+													<summary class="calculator-total__item-summary">
+														<span class="calculator-total__item-title">
+															<svg>
+																<use xlink:href="img/icons/icons.svg#polygon"></use>
+															</svg>
+															<span
+																>Стоимость доставки до РФ <br />
+																и оформление всех документов <br />
+															</span>
+														</span>
+														<span class="calculator-total__item-price">1 800 $ </span>
+													</summary>
+													<div class="calculator-total__item-body">
+														Сумма комиссии от 1000$, но не меньше 10% от аукционной
+														стоимости транспортного средства
+													</div>
+												</details>
+											</div>
+										</div>
+										<div class="calculator-total__description">
+											<span
+												class="calculator-total__description-item calculator-total__description-item--red">
+												<svg>
+													<use xlink:href="img/icons/icons.svg#polygon"></use>
+												</svg>
+												<span>оплата в течение 1-го дня после покупки</span>
+											</span>
+											<span
+												class="calculator-total__description-item calculator-total__description-item--green">
+												<svg>
+													<use xlink:href="img/icons/icons.svg#polygon"></use>
+												</svg>
+												<span>оплата в течение 30-ти дней после заключения договора</span>
+											</span>
+											<span
+												class="calculator-total__description-item calculator-total__description-item--purple">
+												<svg>
+													<use xlink:href="img/icons/icons.svg#polygon"></use>
+												</svg>
+												<span
+													>оплата в течение 5-ти дней после получения уведомления о ввозе
+													транспортного средства</span
+												>
+											</span>
+										</div>
+									</div>
+									<div class="calculator-total__actions">
+										<button class="calculator-total__button" type="button">
+											<span>Скачать</span>
+											<svg>
+												<use xlink:href="img/icons/icons.svg#upload"></use>
+											</svg>
+										</button>
+										<button class="calculator-total__button" type="button">
+											<span>Поделиться</span>
+											<svg>
+												<use xlink:href="img/icons/icons.svg#reply"></use>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
