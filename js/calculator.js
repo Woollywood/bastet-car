@@ -955,75 +955,6 @@ window.addEventListener('load', function (e) {
 	initSliders();
 });
 
-window.addEventListener('load', (windowEvent) => {
-	let phoneInputs = document.querySelectorAll('.tel');
-
-	if (phoneInputs.length) {
-		let maskOptions = {
-			mask: '+7(000)-000-00-00',
-			lazy: false,
-		};
-
-		phoneInputs.forEach((input) => {
-			let mask = new IMask(input, maskOptions);
-			let formInput = input.closest('form').addEventListener('reset', (e) => {
-				mask.destroy();
-			});
-		});
-	}
-});
-
-window.addEventListener('load', (e) => {
-	setTimeout(() => {
-		gsap.to('.purchase-stages__separator-inner', {
-			y: '100%',
-			duration: 3,
-			scrollTrigger: {
-				trigger: '.purchase-stages__separator',
-				start: 'top center',
-				end: 'bottom top',
-				scrub: true,
-			},
-		});
-	}, 1);
-});
-
-window.addEventListener('load', (e) => {
-	AOS.init({
-		useClassNames: true, // if true, will add content of `data-aos` as classes on scroll
-		throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
-		duration: 1000, // values from 0 to 3000, with step 50ms
-	});
-
-	let aosItems = document.querySelectorAll('.aos-init');
-	if (aosItems) {
-		aosItems.forEach((item) => {
-			item.addEventListener('transitionend', (e) => {
-				if (e.propertyName === 'transform' && e.target.classList.contains('aos-init')) {
-					e.target.classList.add('aos-animate-end');
-				}
-			});
-		});
-	}
-
-	let mainBlockText = document.querySelector('.main-block__text');
-	if (mainBlockText) {
-		mainBlockText.addEventListener('transitionend', (e) => {
-			if (e.propertyName === 'height' && e.target.parentNode.classList.contains('aos-animate-end')) {
-				let listItems = document.querySelectorAll('.main-block__item');
-
-				let index = 0;
-				let intervarAnimations = setInterval(() => {
-					listItems[index++].classList.add('animate');
-
-					if (index === listItems.length) {
-						clearInterval(intervarAnimations);
-					}
-				}, 200);
-			}
-		});
-	}
-});
 
 class DynamicAdapt {
 	constructor(type) {
@@ -1177,7 +1108,6 @@ window.addEventListener('load', (windowEvent) => {
 });
 
 isWebp();
-menuInit();
 
 Fancybox.bind('[data-fancybox]', {
 	// Your custom options
