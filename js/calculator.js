@@ -1109,8 +1109,4 @@ window.addEventListener('load', (windowEvent) => {
 
 isWebp();
 
-Fancybox.bind('[data-fancybox]', {
-	// Your custom options
-});
-
 new SimpleBar(document.querySelector('.calculator-total__list'));
