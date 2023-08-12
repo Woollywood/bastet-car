@@ -265,6 +265,8 @@ function formSubmit() {
 	}
 }
 
+formSubmit();
+
 // Функция получения индекса внутри родительского элемента
 function indexInParent(parent, element) {
 	const array = Array.prototype.slice.call(parent.children);
