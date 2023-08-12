@@ -177,6 +177,94 @@ function FLSLog(message) {
 	}, 0);
 }
 
+/* Отправка форм*/
+function formSubmit() {
+	const forms = document.forms;
+	if (forms.length) {
+		for (const form of forms) {
+			form.addEventListener('submit', function (e) {
+				const form = e.target;
+				formSubmitAction(form, e);
+			});
+			form.addEventListener('reset', function (e) {
+				const form = e.target;
+				formValidate.formClean(form);
+			});
+		}
+	}
+	async function formSubmitAction(form, e) {
+		const error = !form.hasAttribute('data-no-validate') ? formValidate.getErrors(form) : 0;
+		if (error === 0) {
+			const ajax = form.hasAttribute('data-ajax');
+			if (ajax) {
+				// Если режим ajax
+				e.preventDefault();
+				const formAction = form.getAttribute('action') ? form.getAttribute('action').trim() : '#';
+				const formMethod = form.getAttribute('method') ? form.getAttribute('method').trim() : 'POST';
+				const formData = new FormData(form);
+
+				form.classList.add('_sending');
+				const response = await fetch(formAction, {
+					method: formMethod,
+					body: formData,
+				});
+				if (response.ok) {
+					let responseResult = await response.json();
+					form.classList.remove('_sending');
+					formSent(form, responseResult);
+				} else {
+					alert('Ошибка');
+					form.classList.remove('_sending');
+				}
+			} else if (form.hasAttribute('data-dev')) {
+				// Если режим разработки
+				e.preventDefault();
+				formSent(form);
+			}
+		} else {
+			e.preventDefault();
+			if (form.querySelector('._form-error') && form.hasAttribute('data-goto-error')) {
+				const formGoToErrorClass = form.dataset.gotoError ? form.dataset.gotoError : '._form-error';
+				gotoBlock(formGoToErrorClass, true, 1000);
+			}
+		}
+	}
+	// Действия после отправки формы
+	function formSent(form, responseResult = ``) {
+		// Создаем событие отправки формы
+		document.dispatchEvent(
+			new CustomEvent('formSent', {
+				detail: {
+					form: form,
+				},
+			})
+		);
+		// Попап показывает, если подключен модуль попапов
+		// и для формы указана настройка
+		setTimeout(() => {
+			if (flsModules.popup) {
+				const popup = form.dataset.popupMessage;
+				popup ? flsModules.popup.open(popup) : null;
+			}
+		}, 0);
+		// Очищаем форму
+		formValidate.formClean(form);
+		form.parentNode.classList.add('_sent');
+		console.log(form);
+		if (form.classList.contains('callback-modal__form')) {
+			document.querySelector('.callback-modal__body').classList.add('_sent');
+			console.log(document.querySelector('.callback-modal__body'));
+			console.log('class added');
+		}
+
+		// Сообщаем в консоль
+		formLogging(`Форма отправлена!`);
+	}
+	function formLogging(message) {
+		FLSLog(`[Forms]: ${message}`);
+	}
+}
+
 // Функция получения индекса внутри родительского элемента
 function indexInParent(parent, element) {
 	const array = Array.prototype.slice.call(parent.children);
