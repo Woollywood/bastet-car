@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Каркас</title>
+		<meta charset="UTF-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<!-- <style>body{opacity: 0;}</style> -->
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+		<link rel="stylesheet" href="css/css-var.css" />
+		<link rel="stylesheet" href="css/style.css" />
+
+		<link rel="shortcut icon" href="favicon.ico" />
+		<!-- <meta name="robots" content="noindex, nofollow"> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Инициализация кастомного скролла, если у пользователя отключен JS -->
+		<noscript>
+			<style>
+				[data-simplebar] {
+					overflow: auto;
+				}
+			</style>
+		</noscript>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__polygon-ibg">
+					<img src="img/header/background.svg" alt="img" />
+				</div>
+				<div class="header__container _container">
+					<div class="header__body">
+						<a class="header__logo" href="#">
+							<img src="img/logo.svg" alt="logo-image" />
+						</a>
+						<div class="header__content">
+							<div class="header__menu menu">
+								<button class="menu__icon icon-menu" type="button" data-da=".header__actions, 767.98">
+									<span></span>
+								</button>
+								<nav class="menu__body">
+									<ul class="menu__list">
+										<li class="menu__item menu-item-hover">
+											<a href="#" class="menu__link">О компании</a>
+										</li>
+										<li class="menu__item menu-item-hover">
+											<a href="#" class="menu__link">Калькулятор</a>
+										</li>
+										<li class="menu__item menu-item-hover">
+											<a href="#" class="menu__link">Услуги</a>
+										</li>
+										<li class="menu__item menu-item-hover">
+											<a href="#" class="menu__link">Отзывы</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div class="header__actions">
+								<div class="header__phone phone-header">
+									<a class="phone-header__icon" href="tel:89883562211">
+										<svg>
+											<use xlink:href="img/icons/icons.svg#phone"></use>
+										</svg>
+									</a>
+									<div class="phone-header__phones">
+										<a class="phone-header__phone menu-item-hover" href="tel:89883562211"
+											>8 (988) 356 22 11</a
+										>
+										<a class="phone-header__phone menu-item-hover" href="tel:89883563241"
+											>8 (988) 356 32 41</a
+										>
+									</div>
+								</div>
+								<a
+									class="header__button button-outstroke button-outstroke-hover-green-background"
+									href="#"
+									data-da=".menu__body, 767.98"
+									data-fancybox
+									data-src="#callBackModal"
+									>Заказать звонок</a
+								>
+								<div
+									id="callBackModal"
+									aria-hidden="true"
+									class="callback-modal popup"
+									style="display: none">
+									<div class="popup__wrapper">
+										<div class="popup__content">
+											<div class="callback-modal__body">
+												<div
+													class="callback-modal__polygon-ibg callback-modal__polygon-ibg_dark">
+													<img
+														src="img/modal/polygon-dark.svg"
+														alt="polygon-background-dark" />
+												</div>
+												<div
+													class="callback-modal__polygon-ibg callback-modal__polygon-ibg_green">
+													<img
+														src="img/modal/polygon-green.svg"
+														alt="polygon-background-green" />
+												</div>
+
+												<div
+													class="callback-modal__polygon-ibg callback-modal__polygon-ibg_green-bottom">
+													<img
+														src="img/modal/polygon-green-bottom.svg"
+														alt="polygon-background-green" />
+												</div>
+												<div
+													class="callback-modal__polygon-ibg callback-modal__polygon-ibg_dark-bottom">
+													<img
+														src="img/modal/polygon-dark-bottom.svg"
+														alt="polygon-background-dark" />
+												</div>
+
+												<div class="callback-modal__body-inner">
+													<div class="callback-modal__title">
+														Оставьте ваш номер телефона и мы вам перезвоним
+													</div>
+													<form class="callback-modal__form" action="#" data-ajax>
+														<div class="input-wrapper">
+															<input
+																class="input input_white-background"
+																type="text"
+																placeholder="Ваше имя"
+																data-required />
+															<div class="input-error">Данные введены некорректно</div>
+														</div>
+														<div class="input-wrapper">
+															<input
+																class="input input_white-background tel"
+																type="tel"
+																data-required />
+															<div class="input-error">Данные введены некорректно</div>
+														</div>
+														<div class="callback-modal__private-policy">
+															Нажимая на кнопку вы даёте согласие на
+															<a href="#">обработку ваших персональных данных</a>
+														</div>
+														<button
+															class="callback-modal__button button-green-light button-green-light-hover-dark-background"
+															type="submit">
+															Отправить
+														</button>
+													</form>
+													<div class="callback-modal__body-sent">
+														<div class="callback-modal__title">Спасибо,</div>
+														<div class="callback-modal__title">
+															мы с вами свяжемся в ближайшее время !
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<main class="page">
+				<section class="frame__main-block main-block-frame">
+					<div class="main-block-frame__container _container">
+						<div class="main-block-frame__body">
+							<h2 class="main-block-frame__title">Название текущего раздела</h2>
+							<div class="main-block-frame__breadcrumbs breadcrumbs">
+								<a href="#">Главная</a>
+								<a href="#">Название раздела</a>
+								<span>Название текущего раздела</span>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			<footer class="footer">
+				<div class="footer__background-ibg footer__background_green-light">
+					<img src="img/footer/polygon-green-light.svg" alt="polygon-image" />
+				</div>
+				<div class="footer__background-ibg footer__background_dark">
+					<img src="img/footer/polygon-dark.svg" alt="polygon-image" />
+				</div>
+				<div class="footer__top top-footer">
+					<div class="top-footer__container _container">
+						<div class="top-footer__body">
+							<a class="top-footer__logo" href="#">
+								<img src="img/logo.svg" alt="logo-image" />
+							</a>
+							<div class="top-footer__social footer-social">
+								<a class="footer-social__item" href="#">
+									<svg>
+										<use xlink:href="img/icons/icons.svg#instagram"></use>
+									</svg>
+								</a>
+								<a class="footer-social__item" href="#">
+									<svg>
+										<use xlink:href="img/icons/icons.svg#youtube"></use>
+									</svg>
+								</a>
+								<a class="footer-social__item" href="#">
+									<svg>
+										<use xlink:href="img/icons/icons.svg#whatsapp"></use>
+									</svg>
+								</a>
+								<a class="footer-social__item" href="#">
+									<svg>
+										<use xlink:href="img/icons/icons.svg#telegram"></use>
+									</svg>
+								</a>
+								<a class="footer-social__item" href="#">
+									<svg>
+										<use xlink:href="img/icons/icons.svg#vk"></use>
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer__center center-footer">
+					<div class="center-footer__container _container">
+						<div class="center-footer__body">
+							<div class="center-footer__content">
+								<nav class="center-footer__menu menu-footer">
+									<ul class="menu-footer__list">
+										<li
+											class="menu-footer__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a class="menu-footer__link" href="#">О компании</a>
+										</li>
+										<li
+											class="menu-footer__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a class="menu-footer__link" href="#">Калькулятор</a>
+										</li>
+										<li
+											class="menu-footer__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a class="menu-footer__link" href="#">Услуги</a>
+										</li>
+										<li
+											class="menu-footer__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a class="menu-footer__link" href="#">Отзывы</a>
+										</li>
+									</ul>
+								</nav>
+								<div class="center-footer__info info-footer">
+									<div class="info-footer__phone-footer phone-footer">
+										<a class="phone-footer__icon" href="tel:89883562211">
+											<svg>
+												<use xlink:href="img/icons/icons.svg#phone"></use>
+											</svg>
+										</a>
+										<div class="phone-footer__phones">
+											<a
+												class="phone-footer__phone menu-item-hover menu-item-hover_hover-dark-background"
+												href="tel:89883562211"
+												>8 (988) 356 22 11</a
+											>
+											<a
+												class="phone-footer__phone menu-item-hover menu-item-hover_hover-dark-background"
+												href="tel:89883563241"
+												>8 (988) 356 32 41</a
+											>
+										</div>
+									</div>
+									<a class="info-footer__text-field" href="#">
+										<div class="info-footer__icon">
+											<svg>
+												<use xlink:href="img/icons/icons.svg#pin"></use>
+											</svg>
+										</div>
+										<span class="menu-item-hover menu-item-hover_hover-dark-background"
+											>г. Москва, ул. Лермонтовская, д. 36/1</span
+										>
+									</a>
+									<a class="info-footer__text-field" href="mailto:carrrop@mail.com">
+										<div class="info-footer__icon">
+											<svg>
+												<use xlink:href="img/icons/icons.svg#email"></use>
+											</svg>
+										</div>
+										<span class="menu-item-hover menu-item-hover_hover-dark-background"
+											>carrrop@mail.com</span
+										>
+									</a>
+								</div>
+							</div>
+							<div class="center-footer__form form-footer">
+								<p class="form-footer__text">Получить консультацию</p>
+								<form class="form-footer__form" action="#" data-ajax>
+									<div class="input-wrapper">
+										<input
+											class="input input_dark-background"
+											type="email"
+											placeholder="E-mail"
+											data-required />
+										<div class="input-error">Данные введены некорректно</div>
+									</div>
+									<button class="button-white button-white-hover-dark-background" type="submit">
+										Отправить
+									</button>
+								</form>
+								<div class="form-footer__sent">
+									<p class="form-footer__text">Спасибо !</p>
+									<p class="form-footer__sub-text">Менеджер свяжется с вами в ближайшее время</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer__bottom bottom-footer">
+					<div class="bottom-footer__container _container">
+						<div class="bottom-footer__body">
+							<a class="bottom-footer__copy" href="#"
+								>Политика обработки персональных данных © 2023 *Bastet car*</a
+							>
+							<a class="bottom-footer__icon" href="#">
+								<img src="img/footer/copi.svg" alt="image" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+		<script src="https://unpkg.com/imask"></script>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+
+		<script src="js/app.js"></script>
+	</body>
+</html>
