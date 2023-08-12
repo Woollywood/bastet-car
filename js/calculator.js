@@ -103,6 +103,71 @@ let _slideToggle = (target, duration = 500) => {
 	}
 };
 
+// Вспомогательные модули блокировки прокрутки
+let bodyLockStatus = true;
+let bodyLockToggle = (delay = 500) => {
+	if (document.documentElement.classList.contains('lock')) {
+		bodyUnlock(delay);
+	} else {
+		bodyLock(delay);
+	}
+};
+let bodyUnlock = (delay = 500) => {
+	let body = document.querySelector('body');
+	if (bodyLockStatus) {
+		let lock_padding = document.querySelectorAll('[data-lp]');
+		setTimeout(() => {
+			for (let index = 0; index < lock_padding.length; index++) {
+				const el = lock_padding[index];
+				el.style.paddingRight = '0px';
+			}
+			body.style.paddingRight = '0px';
+			document.documentElement.classList.remove('lock');
+		}, delay);
+		bodyLockStatus = false;
+		setTimeout(function () {
+			bodyLockStatus = true;
+		}, delay);
+	}
+};
+let bodyLock = (delay = 500) => {
+	let body = document.querySelector('body');
+	if (bodyLockStatus) {
+		let lock_padding = document.querySelectorAll('[data-lp]');
+		for (let index = 0; index < lock_padding.length; index++) {
+			const el = lock_padding[index];
+			el.style.paddingRight = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
+		}
+		body.style.paddingRight = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
+		document.documentElement.classList.add('lock');
+
+		bodyLockStatus = false;
+		setTimeout(function () {
+			bodyLockStatus = true;
+		}, delay);
+	}
+};
+
+// Модуль работы с меню (бургер)
+function menuInit() {
+	if (document.querySelector('.icon-menu')) {
+		document.addEventListener('click', function (e) {
+			if (bodyLockStatus && e.target.closest('.icon-menu')) {
+				bodyLockToggle();
+				document.documentElement.classList.toggle('menu-open');
+			}
+		});
+	}
+}
+function menuOpen() {
+	bodyLock();
+	document.documentElement.classList.add('menu-open');
+}
+function menuClose() {
+	bodyUnlock();
+	document.documentElement.classList.remove('menu-open');
+}
+
 // FLS (Full Logging System)
 function FLSLog(message) {
 	setTimeout(() => {
@@ -116,184 +181,6 @@ function FLSLog(message) {
 function indexInParent(parent, element) {
 	const array = Array.prototype.slice.call(parent.children);
 	return Array.prototype.indexOf.call(array, element);
-}
-
-function spollers() {
-	const spollersArray = document.querySelectorAll("[data-spollers]");
-	if (spollersArray.length > 0) {
-		// Событие клика
-		document.addEventListener("click", setSpollerAction);
-		// Получение обычных слойлеров
-		const spollersRegular = Array.from(spollersArray).filter(function (item, index, self) {
-			return !item.dataset.spollers.split(",")[0];
-		});
-		// Инициализация обычных слойлеров
-		if (spollersRegular.length) {
-			initSpollers(spollersRegular);
-		}
-		// Получение слойлеров с медиа-запросами
-		let mdQueriesArray = dataMediaQueries(spollersArray, "spollers");
-		if (mdQueriesArray && mdQueriesArray.length) {
-			mdQueriesArray.forEach((mdQueriesItem) => {
-				// Событие
-				mdQueriesItem.matchMedia.addEventListener("change", function () {
-					initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-				});
-				initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-			});
-		}
-		// Инициализация
-		function initSpollers(spollersArray, matchMedia = false) {
-			spollersArray.forEach((spollersBlock) => {
-				spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
-				if (matchMedia.matches || !matchMedia) {
-					spollersBlock.classList.add("_spoller-init");
-					initSpollerBody(spollersBlock);
-				} else {
-					spollersBlock.classList.remove("_spoller-init");
-					initSpollerBody(spollersBlock, false);
-				}
-			});
-		}
-		// Работа с контентом
-		function initSpollerBody(spollersBlock, hideSpollerBody = true) {
-			let spollerItems = spollersBlock.querySelectorAll("details");
-			if (spollerItems.length) {
-				spollerItems = Array.from(spollerItems).filter(
-					(item) => item.closest("[data-spollers]") === spollersBlock
-				);
-				spollerItems.forEach((spollerItem) => {
-					let spollerTitle = spollerItem.querySelector("summary");
-					if (hideSpollerBody) {
-						spollerTitle.removeAttribute("tabindex");
-						if (!spollerItem.hasAttribute("data-open")) {
-							spollerItem.open = false;
-							spollerTitle.nextElementSibling.hidden = true;
-						} else {
-							spollerTitle.classList.add("_spoller-active");
-							spollerItem.open = true;
-						}
-					} else {
-						spollerTitle.setAttribute("tabindex", "-1");
-						spollerTitle.classList.remove("_spoller-active");
-						spollerItem.open = true;
-						spollerTitle.nextElementSibling.hidden = false;
-					}
-				});
-			}
-		}
-		function setSpollerAction(e) {
-			const el = e.target;
-			if (el.closest("summary") && el.closest("[data-spollers]")) {
-				if (el.closest("[data-spollers]").classList.contains("_spoller-init")) {
-					const spollerTitle = el.closest("summary");
-					const spollerBlock = spollerTitle.closest("details");
-					const spollersBlock = spollerTitle.closest("[data-spollers]");
-					const oneSpoller = spollersBlock.hasAttribute("data-one-spoller");
-					const spollerSpeed = spollersBlock.dataset.spollersSpeed
-						? parseInt(spollersBlock.dataset.spollersSpeed)
-						: 500;
-					if (!spollersBlock.querySelectorAll("._slide").length) {
-						if (oneSpoller && !spollerBlock.open) {
-							hideSpollersBody(spollersBlock);
-						}
-						spollerTitle.classList.toggle("_spoller-active");
-						_slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
-
-						!spollerBlock.open
-							? (spollerBlock.open = true)
-							: setTimeout(() => {
-									spollerBlock.open = false;
-							  }, spollerSpeed);
-					}
-				}
-				e.preventDefault();
-			}
-			// Закрытие при клике вне спойлера
-			if (!el.closest("[data-spollers]")) {
-				const spollersClose = document.querySelectorAll("[data-spoller-close]");
-				if (spollersClose.length) {
-					spollersClose.forEach((spollerClose) => {
-						const spollersBlock = spollerClose.closest("[data-spollers]");
-						const spollerCloseBlock = spollerClose.parentNode;
-						if (spollersBlock.classList.contains("_spoller-init")) {
-							const spollerSpeed = spollersBlock.dataset.spollersSpeed
-								? parseInt(spollersBlock.dataset.spollersSpeed)
-								: 500;
-							spollerClose.classList.remove("_spoller-active");
-							_slideUp(spollerClose.nextElementSibling, spollerSpeed);
-							setTimeout(() => {
-								spollerCloseBlock.open = false;
-							}, spollerSpeed);
-						}
-					});
-				}
-			}
-		}
-		function hideSpollersBody(spollersBlock) {
-			const spollerActiveBlock = spollersBlock.querySelector("details[open]");
-			if (spollerActiveBlock && !spollersBlock.querySelectorAll("._slide").length) {
-				const spollerActiveTitle = spollerActiveBlock.querySelector("summary");
-				const spollerSpeed = spollersBlock.dataset.spollersSpeed
-					? parseInt(spollersBlock.dataset.spollersSpeed)
-					: 500;
-				spollerActiveTitle.classList.remove("_spoller-active");
-				_slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
-				setTimeout(() => {
-					spollerActiveBlock.open = false;
-				}, spollerSpeed);
-			}
-		}
-	}
-}
-
-function dataMediaQueries(array, dataSetValue) {
-	// Получение объектов с медиа-запросами
-	const media = Array.from(array).filter(function (item, index, self) {
-		if (item.dataset[dataSetValue]) {
-			return item.dataset[dataSetValue].split(",")[0];
-		}
-	});
-	// Инициализация объектов с медиа-запросами
-	if (media.length) {
-		const breakpointsArray = [];
-		media.forEach((item) => {
-			const params = item.dataset[dataSetValue];
-			const breakpoint = {};
-			const paramsArray = params.split(",");
-			breakpoint.value = paramsArray[0];
-			breakpoint.type = paramsArray[1] ? paramsArray[1].trim() : "max";
-			breakpoint.item = item;
-			breakpointsArray.push(breakpoint);
-		});
-		// Получаем уникальные брейкпоинты
-		let mdQueries = breakpointsArray.map(function (item) {
-			return "(" + item.type + "-width: " + item.value + "px)," + item.value + "," + item.type;
-		});
-		mdQueries = uniqArray(mdQueries);
-		const mdQueriesArray = [];
-
-		if (mdQueries.length) {
-			// Работаем с каждым брейкпоинтом
-			mdQueries.forEach((breakpoint) => {
-				const paramsArray = breakpoint.split(",");
-				const mediaBreakpoint = paramsArray[1];
-				const mediaType = paramsArray[2];
-				const matchMedia = window.matchMedia(paramsArray[0]);
-				// Объекты с необходимыми условиями
-				const itemsArray = breakpointsArray.filter(function (item) {
-					if (item.value === mediaBreakpoint && item.type === mediaType) {
-						return true;
-					}
-				});
-				mdQueriesArray.push({
-					itemsArray,
-					matchMedia,
-				});
-			});
-			return mdQueriesArray;
-		}
-	}
 }
 
 //================================================================================================================================================================================================================================================================================================================
@@ -942,7 +829,17 @@ class SelectConstructor {
 					? ` ${this.getSelectedOptionsData(originalSelect).elements[0].dataset.class}`
 					: '';
 			// Выводим текстовое значение
-			return `<button type="button" class="${this.selectClasses.classSelectTitle}"><span${pseudoAttribute} class="${this.selectClasses.classSelectValue}${pseudoAttributeClass}"><span class="${this.selectClasses.classSelectContent}${customClass}">${selectTitleValue}</span></span></button>`;
+			return `
+					<button type="button" class="${this.selectClasses.classSelectTitle}">
+						<span${pseudoAttribute} class="${this.selectClasses.classSelectValue}${pseudoAttributeClass}">
+							<span class="${this.selectClasses.classSelectContent}${customClass}">
+								${selectTitleValue}
+							</span>
+							<svg>
+								<use xlink:href="img/icons/icons.svg#arrow"></use>
+							</svg>
+						</span>
+					</button>`;
 		}
 	}
 	// Конструктор данных для значения заголовка
@@ -1417,7 +1314,214 @@ window.addEventListener('load', (windowEvent) => {
 	}
 });
 
-isWebp();
-spollers();
+gsap.registerPlugin(ScrollTrigger);
 
-new SimpleBar(document.querySelector('.calculator-total__list'));
+window.addEventListener('load', (e) => {
+	setTimeout(() => {
+		gsap.to('.purchase-stages__separator-inner', {
+			y: '100%',
+			duration: 3,
+			scrollTrigger: {
+				trigger: '.purchase-stages__separator',
+				start: 'top center',
+				end: 'bottom top',
+				scrub: true,
+			},
+		});
+	}, 1);
+});
+
+window.addEventListener('load', (e) => {
+	AOS.init({
+		useClassNames: true, // if true, will add content of `data-aos` as classes on scroll
+		throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+		duration: 1000, // values from 0 to 3000, with step 50ms
+	});
+
+	let aosItems = document.querySelectorAll('.aos-init');
+	if (aosItems) {
+		aosItems.forEach((item) => {
+			item.addEventListener('transitionend', (e) => {
+				if (e.propertyName === 'transform' && e.target.classList.contains('aos-init')) {
+					e.target.classList.add('aos-animate-end');
+				}
+			});
+		});
+	}
+
+	let mainBlockText = document.querySelector('.main-block__text');
+	if (mainBlockText) {
+		mainBlockText.addEventListener('transitionend', (e) => {
+			if (e.propertyName === 'height' && e.target.parentNode.classList.contains('aos-animate-end')) {
+				let listItems = document.querySelectorAll('.main-block__item');
+
+				let index = 0;
+				let intervarAnimations = setInterval(() => {
+					listItems[index++].classList.add('animate');
+
+					if (index === listItems.length) {
+						clearInterval(intervarAnimations);
+					}
+				}, 200);
+			}
+		});
+	}
+});
+
+class DynamicAdapt {
+	constructor(type) {
+		this.type = type;
+	}
+	init() {
+		// массив объектов
+		this.оbjects = [];
+		this.daClassname = '_dynamic_adapt_';
+		// массив DOM-элементов
+		this.nodes = [...document.querySelectorAll('[data-da]')];
+
+		// наполнение объектами
+		this.nodes.forEach((node) => {
+			const data = node.dataset.da.trim();
+			const dataArray = data.split(',');
+			const оbject = {};
+			оbject.element = node;
+			оbject.parent = node.parentNode;
+			оbject.destination = document.querySelector(`${dataArray[0].trim()}`);
+			оbject.breakpoint = dataArray[1] ? dataArray[1].trim() : '767';
+			оbject.place = dataArray[2] ? dataArray[2].trim() : 'last';
+			оbject.index = this.indexInParent(оbject.parent, оbject.element);
+			this.оbjects.push(оbject);
+		});
+
+		this.arraySort(this.оbjects);
+
+		// массив уникальных медиа-запросов
+		this.mediaQueries = this.оbjects
+			.map(({ breakpoint }) => `(${this.type}-width: ${breakpoint}px),${breakpoint}`)
+			.filter((item, index, self) => self.indexOf(item) === index);
+
+		// навешивание слушателя на медиа-запрос
+		// и вызов обработчика при первом запуске
+		this.mediaQueries.forEach((media) => {
+			const mediaSplit = media.split(',');
+			const matchMedia = window.matchMedia(mediaSplit[0]);
+			const mediaBreakpoint = mediaSplit[1];
+
+			// массив объектов с подходящим брейкпоинтом
+			const оbjectsFilter = this.оbjects.filter(({ breakpoint }) => breakpoint === mediaBreakpoint);
+			matchMedia.addEventListener('change', () => {
+				this.mediaHandler(matchMedia, оbjectsFilter);
+			});
+			this.mediaHandler(matchMedia, оbjectsFilter);
+		});
+	}
+	// Основная функция
+	mediaHandler(matchMedia, оbjects) {
+		if (matchMedia.matches) {
+			оbjects.forEach((оbject) => {
+				// оbject.index = this.indexInParent(оbject.parent, оbject.element);
+				this.moveTo(оbject.place, оbject.element, оbject.destination);
+			});
+		} else {
+			оbjects.forEach(({ parent, element, index }) => {
+				if (element.classList.contains(this.daClassname)) {
+					this.moveBack(parent, element, index);
+				}
+			});
+		}
+	}
+	// Функция перемещения
+	moveTo(place, element, destination) {
+		element.classList.add(this.daClassname);
+		if (place === 'last' || place >= destination.children.length) {
+			destination.append(element);
+			return;
+		}
+		if (place === 'first') {
+			destination.prepend(element);
+			return;
+		}
+		destination.children[place].before(element);
+	}
+	// Функция возврата
+	moveBack(parent, element, index) {
+		element.classList.remove(this.daClassname);
+		if (parent.children[index] !== undefined) {
+			parent.children[index].before(element);
+		} else {
+			parent.append(element);
+		}
+	}
+	// Функция получения индекса внутри родительского элемента
+	indexInParent(parent, element) {
+		return [...parent.children].indexOf(element);
+	}
+	// Функция сортировки массива по breakpoint и place
+	// за зростанням для this.type = min
+	// за спаданням для this.type = max
+	arraySort(arr) {
+		if (this.type === 'min') {
+			arr.sort((a, b) => {
+				if (a.breakpoint === b.breakpoint) {
+					if (a.place === b.place) {
+						return 0;
+					}
+					if (a.place === 'first' || b.place === 'last') {
+						return -1;
+					}
+					if (a.place === 'last' || b.place === 'first') {
+						return 1;
+					}
+					return 0;
+				}
+				return a.breakpoint - b.breakpoint;
+			});
+		} else {
+			arr.sort((a, b) => {
+				if (a.breakpoint === b.breakpoint) {
+					if (a.place === b.place) {
+						return 0;
+					}
+					if (a.place === 'first' || b.place === 'last') {
+						return 1;
+					}
+					if (a.place === 'last' || b.place === 'first') {
+						return -1;
+					}
+					return 0;
+				}
+				return b.breakpoint - a.breakpoint;
+			});
+			return;
+		}
+	}
+}
+const da = new DynamicAdapt('max');
+da.init();
+
+window.addEventListener('load', (windowEvent) => {
+	let lastClickedSlider = null;
+
+	document.addEventListener('click', (clickEVent) => {
+		const targetElement = clickEVent.target;
+
+		if (targetElement.closest('.slide-model__more') || lastClickedSlider !== null) {
+			clickEVent.preventDefault();
+
+			if (lastClickedSlider === null) {
+				lastClickedSlider = targetElement.closest('.slider-models__slide');
+				lastClickedSlider.classList.add('_clicked');
+			} else {
+				lastClickedSlider.classList.remove('_clicked');
+				lastClickedSlider = null;
+			}
+		}
+	});
+});
+
+isWebp();
+menuInit();
+
+Fancybox.bind('[data-fancybox]', {
+	// Your custom options
+});
