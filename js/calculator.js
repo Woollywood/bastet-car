@@ -177,6 +177,127 @@ function FLSLog(message) {
 	}, 0);
 }
 
+// Валидация форм
+let formValidate = {
+	getErrors(form) {
+		let error = 0;
+		let formRequiredItems = form.querySelectorAll('*[data-required]');
+		if (formRequiredItems.length) {
+			formRequiredItems.forEach((formRequiredItem) => {
+				if (
+					(formRequiredItem.offsetParent !== null || formRequiredItem.tagName === 'SELECT') &&
+					!formRequiredItem.disabled
+				) {
+					error += this.validateInput(formRequiredItem);
+				}
+			});
+		}
+		return error;
+	},
+	validateInput(formRequiredItem) {
+		let error = 0;
+		if (formRequiredItem.dataset.required === 'email') {
+			formRequiredItem.value = formRequiredItem.value.replace(' ', '');
+			if (this.emailTest(formRequiredItem)) {
+				this.addError(formRequiredItem);
+				error++;
+			} else {
+				this.removeError(formRequiredItem);
+			}
+		} else if (formRequiredItem.type === 'checkbox' && !formRequiredItem.checked) {
+			this.addError(formRequiredItem);
+			error++;
+		} else {
+			if (formRequiredItem.tagName === 'SELECT' && !formRequiredItem.value) {
+				this.addError(formRequiredItem);
+				error++;
+			} else if (!formRequiredItem.value.trim()) {
+				this.addError(formRequiredItem);
+				error++;
+			} else if (formRequiredItem.classList.contains('tel') && formRequiredItem.value.includes('_')) {
+				this.addError(formRequiredItem);
+				error++;
+			} else {
+				this.removeError(formRequiredItem);
+			}
+		}
+		return error;
+	},
+	addError(formRequiredItem) {
+		formRequiredItem.classList.add('_form-error');
+		if (formRequiredItem.tagName === 'SELECT') {
+			formRequiredItem.closest('.input-wrapper').classList.add('_form-error');
+		} else {
+			formRequiredItem.parentElement.classList.add('_form-error');
+			let inputError = formRequiredItem.parentElement.querySelector('.form__error');
+			if (inputError) formRequiredItem.parentElement.removeChild(inputError);
+			if (formRequiredItem.dataset.error) {
+				formRequiredItem.parentElement.insertAdjacentHTML(
+					'beforeend',
+					`<div class="form__error">${formRequiredItem.dataset.error}</div>`
+				);
+			}
+		}
+	},
+	removeError(formRequiredItem) {
+		formRequiredItem.classList.remove('_form-error');
+		if (formRequiredItem.tagName === 'SELECT') {
+			formRequiredItem.closest('.input-wrapper').classList.remove('_form-error');
+		} else {
+			formRequiredItem.parentElement.classList.remove('_form-error');
+			if (formRequiredItem.parentElement.querySelector('.form__error')) {
+				formRequiredItem.parentElement.removeChild(
+					formRequiredItem.parentElement.querySelector('.form__error')
+				);
+			}
+		}
+	},
+	formClean(form) {
+		form.reset();
+
+		setTimeout(() => {
+			let maskInput = form.querySelector('.tel');
+			if (maskInput) {
+				let maskOptions = {
+					mask: '+7(000)000-00-00',
+					lazy: false,
+				};
+				let mask = new IMask(maskInput, maskOptions);
+				mask.updateValue();
+			}
+		}, 20);
+
+		setTimeout(() => {
+			let inputs = form.querySelectorAll('input,textarea');
+			for (let index = 0; index < inputs.length; index++) {
+				const el = inputs[index];
+				el.parentElement.classList.remove('_form-focus');
+				el.classList.remove('_form-focus');
+				formValidate.removeError(el);
+			}
+			let checkboxes = form.querySelectorAll('.checkbox__input');
+			if (checkboxes.length > 0) {
+				for (let index = 0; index < checkboxes.length; index++) {
+					const checkbox = checkboxes[index];
+					checkbox.checked = false;
+				}
+			}
+			if (flsModules.select) {
+				let selects = form.querySelectorAll('.select');
+				if (selects.length) {
+					for (let index = 0; index < selects.length; index++) {
+						const select = selects[index].querySelector('select');
+						flsModules.select.selectBuild(select);
+					}
+				}
+			}
+		}, 0);
+	},
+	emailTest(formRequiredItem) {
+		return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
+	},
+};
+
 /* Отправка форм*/
 function formSubmit() {
 	const forms = document.forms;
