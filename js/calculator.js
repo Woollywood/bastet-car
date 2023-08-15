@@ -1386,3 +1386,4 @@ window.addEventListener('load', (windowEvent) => {
 isWebp();
 
 new SimpleBar(document.querySelector('.calculator-total__list'));
+new SimpleBar(document.querySelector('.select__scroll'));
