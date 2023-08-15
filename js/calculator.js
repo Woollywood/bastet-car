@@ -1384,8 +1384,6 @@ window.addEventListener('load', (windowEvent) => {
 });
 
 isWebp();
+menuInit();
 
 new SimpleBar(document.querySelector('.calculator-total__list'));
-document.querySelectorAll('.select__scroll')?.forEach(item => {
-	new SimpleBar(item);
-})
