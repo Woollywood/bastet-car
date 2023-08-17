@@ -1515,3 +1515,21 @@ menuInit();
 Fancybox.bind('[data-fancybox]', {
 	// Your custom options
 });
+
+window.addEventListener('load', (windowEvent) => {
+	let priceInputs = document.querySelectorAll('.price-input');
+
+	if (priceInputs.length) {
+		priceInputs.forEach(input => {
+			input.addEventListener('input', e => {
+				if (!isFinite(e.data)) {
+					e.target.value = e.target.value.slice(0, e.target.value.length - 1);
+				}
+
+				if (!e.target.value.includes('$')) {
+					e.target.value = e.target.value.trim() + " $";
+				}
+			})
+		})
+	}
+});

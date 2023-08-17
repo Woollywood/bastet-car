@@ -552,16 +552,22 @@ textarea.options__label {
   gap: 0.5rem;
 }
 
-.select__value svg {
+.select__value::after {
+  content: "";
+  display: block;
   width: 1rem;
   height: 1rem;
-  fill: rgba(20, 20, 20, 0.4);
+  background: url(../img/icons/arrow.svg);
+  background-position: center;
+  background-size: auto auto;
+  background-repeat: no-repeat;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
-._select-open .select__value svg {
+._select-open .select__value::after {
+  background: url(../img/icons/arrow--open.svg);
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
@@ -574,6 +580,9 @@ textarea.options__label {
      text-overflow: ellipsis;
   white-space: nowrap;
   color: rgba(20, 20, 20, 0.4);
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .select__text {
@@ -746,12 +755,9 @@ textarea.options__label {
 }
 
 .breadcrumbs > * {
-  font-size: var(--uni-text-font-size-p5);
   line-height: var(--uni-text-line-height);
   font-weight: 300;
   position: relative;
-  padding-right: 0.9375rem;
-  margin-right: 0.9375rem;
 }
 
 .breadcrumbs > *:not(:last-child)::after {
@@ -760,7 +766,6 @@ textarea.options__label {
   right: -0.3125rem;
   top: 0;
   color: var(--uni-breadcrumbs-link-color);
-  font-size: var(--uni-text-font-size-p5);
   line-height: var(--uni-text-line-height);
   font-weight: 300;
 }
@@ -1555,30 +1560,6 @@ textarea.options__label {
   text-align: center;
 }
 
-.calculator-form__price-input {
-  color: #141414;
-}
-
-.calculator-form__price-input::-webkit-input-placeholder {
-  color: #141414;
-}
-
-.calculator-form__price-input::-moz-placeholder {
-  color: #141414;
-}
-
-.calculator-form__price-input:-ms-input-placeholder {
-  color: #141414;
-}
-
-.calculator-form__price-input::-ms-input-placeholder {
-  color: #141414;
-}
-
-.calculator-form__price-input::placeholder {
-  color: #141414;
-}
-
 .calculator-form__price-input--mobile {
   display: none;
 }
@@ -1679,6 +1660,12 @@ textarea.options__label {
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .calculator-form__button-reset::after {
@@ -1767,7 +1754,7 @@ textarea.options__label {
   fill: #686cd0;
 }
 
-.calculator-total__item-summary {
+.calculator-total__item-top {
   display: -ms-grid;
   display: grid;
   gap: 2rem;
@@ -1779,7 +1766,24 @@ textarea.options__label {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  cursor: pointer;
+}
+
+.calculator-total__item-clue {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.25rem;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 0.5rem;
+  margin-left: 1.75rem;
+  max-width: 18.75rem;
+  line-height: 140%;
+}
+
+.calculator-total__item-clue::before {
+  content: "*";
 }
 
 .calculator-total__item-title {
@@ -1792,10 +1796,10 @@ textarea.options__label {
           align-items: center;
 }
 
-.calculator-total__item-title span {
-  color: #141414;
+.calculator-total__item-title div {
+  color: rgba(20, 20, 20, 0.6);
   font-weight: 300;
-  line-height: normal;
+  line-height: 130%;
 }
 
 .calculator-total__item-title svg {
@@ -1809,23 +1813,6 @@ textarea.options__label {
   line-height: normal;
   white-space: nowrap;
   justify-self: flex-end;
-}
-
-.calculator-total__item-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 0.25rem;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  margin-top: 0.5rem;
-  margin-left: 1.75rem;
-  max-width: 18.75rem;
-}
-
-.calculator-total__item-body::before {
-  content: "*";
 }
 
 .calculator-total__description-item {
@@ -5420,6 +5407,262 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
           transform: perspective(2500px) rotateX(0);
 }
 
+[data-simplebar] {
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.simplebar-wrapper {
+  overflow: hidden;
+  width: inherit;
+  height: inherit;
+  max-width: inherit;
+  max-height: inherit;
+}
+
+.simplebar-mask {
+  direction: inherit;
+  position: absolute;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: auto !important;
+  height: auto !important;
+  z-index: 0;
+}
+
+.simplebar-offset {
+  direction: inherit !important;
+  -webkit-box-sizing: inherit !important;
+          box-sizing: inherit !important;
+  resize: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.simplebar-content-wrapper {
+  direction: inherit;
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+  position: relative;
+  display: block;
+  height: 100%;
+  /* Required for horizontal native scrollbar to not appear if parent is taller than natural height */
+  width: auto;
+  max-width: 100%;
+  /* Not required for horizontal scroll to trigger */
+  max-height: 100%;
+  /* Needed for vertical scroll to trigger */
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.simplebar-content-wrapper::-webkit-scrollbar,
+.simplebar-hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.simplebar-content:before,
+.simplebar-content:after {
+  content: " ";
+  display: table;
+}
+
+.simplebar-placeholder {
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.simplebar-height-auto-observer-wrapper {
+  -webkit-box-sizing: inherit !important;
+          box-sizing: inherit !important;
+  height: 100%;
+  width: 100%;
+  max-width: 1px;
+  position: relative;
+  float: left;
+  max-height: 1px;
+  overflow: hidden;
+  z-index: -1;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
+  -webkit-box-flex: inherit;
+      -ms-flex-positive: inherit;
+          flex-grow: inherit;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+}
+
+.simplebar-height-auto-observer {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1000%;
+  width: 1000%;
+  min-height: 1px;
+  min-width: 1px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.simplebar-track {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+[data-simplebar].simplebar-dragging {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+[data-simplebar].simplebar-dragging .simplebar-content {
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+[data-simplebar].simplebar-dragging .simplebar-track {
+  pointer-events: all;
+}
+
+.simplebar-scrollbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-height: 10px;
+}
+
+.simplebar-scrollbar:before {
+  position: absolute;
+  content: "";
+  background: black;
+  border-radius: 7px;
+  left: 2px;
+  right: 2px;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s 0.5s linear;
+  -o-transition: opacity 0.2s 0.5s linear;
+  transition: opacity 0.2s 0.5s linear;
+}
+
+.simplebar-scrollbar.simplebar-visible:before {
+  opacity: 0.5;
+  -webkit-transition-delay: 0s;
+       -o-transition-delay: 0s;
+          transition-delay: 0s;
+  -webkit-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+.simplebar-track.simplebar-vertical {
+  top: 0;
+  width: 11px;
+}
+
+.simplebar-scrollbar:before {
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+}
+
+.simplebar-track.simplebar-horizontal {
+  left: 0;
+  height: 11px;
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar {
+  right: auto;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 0;
+  min-width: 10px;
+  width: auto;
+}
+
+/* Rtl support */
+
+[data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical {
+  right: auto;
+  left: 0;
+}
+
+.simplebar-dummy-scrollbar-size {
+  direction: rtl;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  height: 500px;
+  width: 500px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  -ms-overflow-style: scrollbar !important;
+}
+
+.simplebar-dummy-scrollbar-size > div {
+  width: 200%;
+  height: 200%;
+  margin: 10px 0;
+}
+
+.simplebar-hide-scrollbar {
+  position: fixed;
+  left: 0;
+  visibility: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 @media (min-width: 29.99875em) {
   .form-footer__form .input-wrapper {
     -webkit-box-flex: 0;
@@ -5438,28 +5681,23 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
   }
 }
 
-@media (min-width: 47.99875em) {
-  .calculator__content {
-    gap: 2rem;
-  }
-
-  .calculator__content {
-    -ms-grid-columns: 50.8449669361% 1fr;
-    grid-template-columns: 50.8449669361% 1fr;
-  }
-
-  .calculator__right {
-    border-left: 0.03125rem solid rgba(222, 238, 189, 0.9);
-  }
-
-  .calculator-form__price input {
-    -ms-flex-negative: 0;
-        flex-shrink: 0;
-    flex-shrink: 0;
-  }
-}
-
 @media (min-width: 47.99875em) and (min-width: 80em) {
+  .breadcrumbs > * {
+    font-size: 1rem;
+  }
+
+  .breadcrumbs > *:not(:last-child)::after {
+    font-size: 1rem;
+  }
+
+  .calculator__body {
+    padding-top: 4rem;
+  }
+
+  .calculator__body {
+    padding-bottom: 9.25rem;
+  }
+
   .calculator-form__line .select {
     max-width: 20.875rem;
   }
@@ -5498,6 +5736,27 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
   }
 }
 
+@media (min-width: 47.99875em) {
+  .calculator__content {
+    gap: 2rem;
+  }
+
+  .calculator__content {
+    -ms-grid-columns: 50.8449669361% 1fr;
+    grid-template-columns: 50.8449669361% 1fr;
+  }
+
+  .calculator__right {
+    border-left: 0.03125rem solid rgba(222, 238, 189, 0.9);
+  }
+
+  .calculator-form__price input {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    flex-shrink: 0;
+  }
+}
+
 @media (min-width: 47.99875em) and (min-width: 85.0625em) {
   .calculator-total {
     margin-left: 2.25rem;
@@ -5526,16 +5785,24 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 }
 
 @media (min-width: 85.0625em) {
-  .calculator-total__item-title span {
-    font-size: 1rem;
+  .calculator-total__item-clue {
+    font-size: 0.75rem;
   }
 
-  .calculator-total__item-body {
-    font-size: 0.75rem;
+  .calculator-total__item-title div {
+    font-size: 1rem;
   }
 }
 
 @media (min-width: 86.9375em) {
+  .breadcrumbs > * {
+    padding-right: 0.9375rem;
+  }
+
+  .breadcrumbs > * {
+    margin-right: 0.9375rem;
+  }
+
   .header__body {
     -webkit-column-gap: 13.9375rem;
        -moz-column-gap: 13.9375rem;
@@ -5605,14 +5872,6 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
     padding-top: 4rem;
   }
 
-  .calculator__body {
-    padding-top: 4rem;
-  }
-
-  .calculator__body {
-    padding-bottom: 7.3125rem;
-  }
-
   .calculator__breadcrumbs:not(:last-child) {
     margin-bottom: 3rem;
   }
@@ -5671,6 +5930,12 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
   }
 }
 
+@media (min-width: 80em) and (min-width: 85.0625em) {
+  .calculator__body {
+    padding-bottom: 7.3125rem;
+  }
+}
+
 @media (min-width: 80em) {
   .calculator-form__title:not(:last-child) {
     margin-bottom: 1rem;
@@ -5719,12 +5984,12 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 }
 
 @media (max-width: 80em) {
-  .calculator-total__item-title span {
-    font-size: 0.875rem;
+  .calculator-total__item-clue {
+    font-size: 0.625rem;
   }
 
-  .calculator-total__item-body {
-    font-size: 0.625rem;
+  .calculator-total__item-title div {
+    font-size: 0.875rem;
   }
 }
 
@@ -5796,6 +6061,14 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 }
 
 @media (max-width: 20em) {
+  .breadcrumbs > * {
+    padding-right: 0.625rem;
+  }
+
+  .breadcrumbs > * {
+    margin-right: 0.625rem;
+  }
+
   .header__body {
     min-height: 5rem;
   }
@@ -5843,14 +6116,6 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 
   .calculator__body {
     margin-top: 4.9375rem;
-  }
-
-  .calculator__body {
-    padding-top: 1.5rem;
-  }
-
-  .calculator__body {
-    padding-bottom: 5rem;
   }
 
   .calculator__breadcrumbs:not(:last-child) {
@@ -5969,6 +6234,56 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 
   .br-mobile {
     display: block;
+  }
+}
+
+@media (max-width: 47.99875em) and (max-width: 20em) {
+  .breadcrumbs > * {
+    font-size: 0.625rem;
+  }
+
+  .breadcrumbs > *:not(:last-child)::after {
+    font-size: 0.625rem;
+  }
+
+  .menu__list {
+    row-gap: 1rem;
+  }
+
+  .menu__list:not(:last-child) {
+    margin-bottom: 2.25rem;
+  }
+
+  .menu__link {
+    font-size: 1.5rem;
+  }
+
+  .calculator__body {
+    padding-top: 1.5rem;
+  }
+
+  .calculator__body {
+    padding-bottom: 5rem;
+  }
+
+  .calculator-form__title {
+    font-size: 0.875rem;
+  }
+
+  .calculator-total__top:not(:last-child) {
+    margin-bottom: 3.75rem;
+  }
+
+  .calculator-total__total-price {
+    font-size: 1.125rem;
+  }
+
+  .calculator-total__item-title div {
+    font-size: 0.75rem;
+  }
+
+  .calculator-total__item-price {
+    font-size: 0.75rem;
   }
 }
 
@@ -6113,40 +6428,6 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
   }
 }
 
-@media (max-width: 47.99875em) and (max-width: 20em) {
-  .menu__list {
-    row-gap: 1rem;
-  }
-
-  .menu__list:not(:last-child) {
-    margin-bottom: 2.25rem;
-  }
-
-  .menu__link {
-    font-size: 1.5rem;
-  }
-
-  .calculator-form__title {
-    font-size: 0.875rem;
-  }
-
-  .calculator-total__top:not(:last-child) {
-    margin-bottom: 3.75rem;
-  }
-
-  .calculator-total__total-price {
-    font-size: 1.125rem;
-  }
-
-  .calculator-total__item-title span {
-    font-size: 0.75rem;
-  }
-
-  .calculator-total__item-price {
-    font-size: 0.75rem;
-  }
-}
-
 @media (max-width: 47.99875em) and (any-hover: none) {
   .icon-menu {
     cursor: default;
@@ -6192,7 +6473,7 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
             flex-direction: column;
   }
 
-  .calculator-total__item-body {
+  .calculator-total__item-clue {
     max-width: 11rem;
   }
 
@@ -6254,91 +6535,448 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 }
 }
 
-@media (max-width: 86.9375em) and (min-width: 85.0625em) {
-  .header__body {
-    -webkit-column-gap: 9.75rem;
-       -moz-column-gap: 9.75rem;
-            column-gap: 9.75rem;
+@media (max-width: 47.99875em) and (min-width: 48em) {
+  .breadcrumbs > * {
+    font-size: 0.75rem;
   }
 
-  .header__content {
-    -webkit-column-gap: 3.5rem;
-       -moz-column-gap: 3.5rem;
-            column-gap: 3.5rem;
+  .breadcrumbs > *:not(:last-child)::after {
+    font-size: 0.75rem;
   }
 
-  .header__actions {
-    gap: 3.5rem;
+  .calculator__body {
+    padding-top: 2rem;
   }
 
-  .menu__list {
-    -webkit-column-gap: 3.5rem;
-       -moz-column-gap: 3.5rem;
-            column-gap: 3.5rem;
+  .calculator__body {
+    padding-bottom: 7.3125rem;
+  }
+
+  .calculator-form__title {
+    font-size: 1rem;
+  }
+
+  .calculator-total__top:not(:last-child) {
+    margin-bottom: 4.25rem;
+  }
+
+  .calculator-total__total-price {
+    font-size: 1.25rem;
+  }
+
+  .calculator-total__item-title div {
+    font-size: 0.875rem;
+  }
+
+  .calculator-total__item-price {
+    font-size: 0.875rem;
   }
 }
 
-@media (max-width: 86.9375em) and (min-width: 64em) and (max-width: 85.0625em) {
-@supports ((-moz-column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem )) or (column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem ))) {
-    .header__body {
-      -webkit-column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem );
-         -moz-column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem );
-              column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem );
+@media (max-width: 47.99875em) and (min-width: 20em) and (max-width: 48em) {
+@supports (font-size: clamp( 0.625rem , 0.5357142857rem  +  0.4464285714vw , 0.75rem )) {
+    .breadcrumbs > * {
+      font-size: clamp( 0.625rem , 0.5357142857rem  +  0.4464285714vw , 0.75rem );
     }
 }
 
-@supports not ((-moz-column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem )) or (column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem ))) {
-    .header__body {
-      -webkit-column-gap: calc(
-				1.5rem + 8.25 * (100vw - 64rem) / 21.0625
-			);
-         -moz-column-gap: calc(
-				1.5rem + 8.25 * (100vw - 64rem) / 21.0625
-			);
-              column-gap: calc(
-				1.5rem + 8.25 * (100vw - 64rem) / 21.0625
+@supports not (font-size: clamp( 0.625rem , 0.5357142857rem  +  0.4464285714vw , 0.75rem )) {
+    .breadcrumbs > * {
+      font-size: calc(
+				0.625rem + 0.125 * (100vw - 20rem) / 28
 			);
     }
 }
 
-@supports ((-moz-column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem )) or (column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem ))) {
-    .header__content {
-      -webkit-column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem );
-         -moz-column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem );
-              column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem );
+@supports (font-size: clamp( 0.625rem , 0.5357142857rem  +  0.4464285714vw , 0.75rem )) {
+    .breadcrumbs > *:not(:last-child)::after {
+      font-size: clamp( 0.625rem , 0.5357142857rem  +  0.4464285714vw , 0.75rem );
     }
 }
 
-@supports not ((-moz-column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem )) or (column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem ))) {
-    .header__content {
-      -webkit-column-gap: calc(
-				1.5rem + 2 * (100vw - 64rem) / 21.0625
-			);
-         -moz-column-gap: calc(
-				1.5rem + 2 * (100vw - 64rem) / 21.0625
-			);
-              column-gap: calc(
-				1.5rem + 2 * (100vw - 64rem) / 21.0625
+@supports not (font-size: clamp( 0.625rem , 0.5357142857rem  +  0.4464285714vw , 0.75rem )) {
+    .breadcrumbs > *:not(:last-child)::after {
+      font-size: calc(
+				0.625rem + 0.125 * (100vw - 20rem) / 28
 			);
     }
 }
 
-@supports (gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem )) {
-    .header__actions {
-      gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem );
+@supports (padding-top: clamp( 1.5rem , 1.1428571429rem  +  1.7857142857vw , 2rem )) {
+    .calculator__body {
+      padding-top: clamp( 1.5rem , 1.1428571429rem  +  1.7857142857vw , 2rem );
     }
 }
 
-@supports not (gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem )) {
-    .header__actions {
-      gap: calc(
-				1.5rem + 2 * (100vw - 64rem) / 21.0625
+@supports not (padding-top: clamp( 1.5rem , 1.1428571429rem  +  1.7857142857vw , 2rem )) {
+    .calculator__body {
+      padding-top: calc(
+				1.5rem + 0.5 * (100vw - 20rem) / 28
 			);
     }
 }
+
+@supports (padding-bottom: clamp( 5rem , 3.3482142857rem  +  8.2589285714vw , 7.3125rem )) {
+    .calculator__body {
+      padding-bottom: clamp( 5rem , 3.3482142857rem  +  8.2589285714vw , 7.3125rem );
+    }
+}
+
+@supports not (padding-bottom: clamp( 5rem , 3.3482142857rem  +  8.2589285714vw , 7.3125rem )) {
+    .calculator__body {
+      padding-bottom: calc(
+				5rem + 2.3125 * (100vw - 20rem) / 28
+			);
+    }
+}
+
+@supports (font-size: clamp( 0.875rem , 0.7857142857rem  +  0.4464285714vw , 1rem )) {
+    .calculator-form__title {
+      font-size: clamp( 0.875rem , 0.7857142857rem  +  0.4464285714vw , 1rem );
+    }
+}
+
+@supports not (font-size: clamp( 0.875rem , 0.7857142857rem  +  0.4464285714vw , 1rem )) {
+    .calculator-form__title {
+      font-size: calc(
+				0.875rem + 0.125 * (100vw - 20rem) / 28
+			);
+    }
+}
+
+@supports (margin-bottom: clamp( 3.75rem , 3.3928571429rem  +  1.7857142857vw , 4.25rem )) {
+    .calculator-total__top:not(:last-child) {
+      margin-bottom: clamp( 3.75rem , 3.3928571429rem  +  1.7857142857vw , 4.25rem );
+    }
+}
+
+@supports not (margin-bottom: clamp( 3.75rem , 3.3928571429rem  +  1.7857142857vw , 4.25rem )) {
+    .calculator-total__top:not(:last-child) {
+      margin-bottom: calc(
+				3.75rem + 0.5 * (100vw - 20rem) / 28
+			);
+    }
+}
+
+@supports (font-size: clamp( 1.125rem , 1.0357142857rem  +  0.4464285714vw , 1.25rem )) {
+    .calculator-total__total-price {
+      font-size: clamp( 1.125rem , 1.0357142857rem  +  0.4464285714vw , 1.25rem );
+    }
+}
+
+@supports not (font-size: clamp( 1.125rem , 1.0357142857rem  +  0.4464285714vw , 1.25rem )) {
+    .calculator-total__total-price {
+      font-size: calc(
+				1.125rem + 0.125 * (100vw - 20rem) / 28
+			);
+    }
+}
+
+@supports (font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem )) {
+    .calculator-total__item-title div {
+      font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem );
+    }
+}
+
+@supports not (font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem )) {
+    .calculator-total__item-title div {
+      font-size: calc(
+				0.75rem + 0.125 * (100vw - 20rem) / 28
+			);
+    }
+}
+
+@supports (font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem )) {
+    .calculator-total__item-price {
+      font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem );
+    }
+}
+
+@supports not (font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem )) {
+    .calculator-total__item-price {
+      font-size: calc(
+				0.75rem + 0.125 * (100vw - 20rem) / 28
+			);
+    }
+}
+}
+
+@media (min-width: 47.99875em) and (min-width: 48em) and (max-width: 80em) {
+@supports (font-size: clamp( 0.75rem , 0.375rem  +  0.78125vw , 1rem )) {
+    .breadcrumbs > * {
+      font-size: clamp( 0.75rem , 0.375rem  +  0.78125vw , 1rem );
+    }
+}
+
+@supports not (font-size: clamp( 0.75rem , 0.375rem  +  0.78125vw , 1rem )) {
+    .breadcrumbs > * {
+      font-size: calc(
+				0.75rem + 0.25 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (font-size: clamp( 0.75rem , 0.375rem  +  0.78125vw , 1rem )) {
+    .breadcrumbs > *:not(:last-child)::after {
+      font-size: clamp( 0.75rem , 0.375rem  +  0.78125vw , 1rem );
+    }
+}
+
+@supports not (font-size: clamp( 0.75rem , 0.375rem  +  0.78125vw , 1rem )) {
+    .breadcrumbs > *:not(:last-child)::after {
+      font-size: calc(
+				0.75rem + 0.25 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (padding-top: clamp( 2rem , -1rem  +  6.25vw , 4rem )) {
+    .calculator__body {
+      padding-top: clamp( 2rem , -1rem  +  6.25vw , 4rem );
+    }
+}
+
+@supports not (padding-top: clamp( 2rem , -1rem  +  6.25vw , 4rem )) {
+    .calculator__body {
+      padding-top: calc(
+				2rem + 2 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (padding-bottom: clamp( 7.3125rem , 4.40625rem  +  6.0546875vw , 9.25rem )) {
+    .calculator__body {
+      padding-bottom: clamp( 7.3125rem , 4.40625rem  +  6.0546875vw , 9.25rem );
+    }
+}
+
+@supports not (padding-bottom: clamp( 7.3125rem , 4.40625rem  +  6.0546875vw , 9.25rem )) {
+    .calculator__body {
+      padding-bottom: calc(
+				7.3125rem + 1.9375 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (max-width: clamp( 10.5625rem , -4.90625rem  +  32.2265625vw , 20.875rem )) {
+    .calculator-form__line .select {
+      max-width: clamp( 10.5625rem , -4.90625rem  +  32.2265625vw , 20.875rem );
+    }
+}
+
+@supports not (max-width: clamp( 10.5625rem , -4.90625rem  +  32.2265625vw , 20.875rem )) {
+    .calculator-form__line .select {
+      max-width: calc(
+				10.5625rem + 10.3125 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (font-size: clamp( 1rem , 0.625rem  +  0.78125vw , 1.25rem )) {
+    .calculator-form__title {
+      font-size: clamp( 1rem , 0.625rem  +  0.78125vw , 1.25rem );
+    }
+}
+
+@supports not (font-size: clamp( 1rem , 0.625rem  +  0.78125vw , 1.25rem )) {
+    .calculator-form__title {
+      font-size: calc(
+				1rem + 0.25 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (flex-basis: clamp( 9.8125rem , 11.6875rem  +  -2.34375vw , 10.5625rem )) {
+    .calculator-form__price input {
+      -ms-flex-preferred-size: clamp( 9.8125rem , 11.6875rem  +  -2.34375vw , 10.5625rem );
+          flex-basis: clamp( 9.8125rem , 11.6875rem  +  -2.34375vw , 10.5625rem );
+    }
+}
+
+@supports not (flex-basis: clamp( 9.8125rem , 11.6875rem  +  -2.34375vw , 10.5625rem )) {
+    .calculator-form__price input {
+      -ms-flex-preferred-size: calc(
+				10.5625rem + -0.75 * (100vw - 48rem) / 32
+			);
+          flex-basis: calc(
+				10.5625rem + -0.75 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (width: clamp( 11.5rem , 6.71875rem  +  9.9609375vw , 14.6875rem )) {
+    .calculator-form__button-submit {
+      width: clamp( 11.5rem , 6.71875rem  +  9.9609375vw , 14.6875rem );
+    }
+}
+
+@supports not (width: clamp( 11.5rem , 6.71875rem  +  9.9609375vw , 14.6875rem )) {
+    .calculator-form__button-submit {
+      width: calc(
+				11.5rem + 3.1875 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (max-width: clamp( 22.375rem , 11.59375rem  +  22.4609375vw , 29.5625rem )) {
+    .calculator-total {
+      max-width: clamp( 22.375rem , 11.59375rem  +  22.4609375vw , 29.5625rem );
+    }
+}
+
+@supports not (max-width: clamp( 22.375rem , 11.59375rem  +  22.4609375vw , 29.5625rem )) {
+    .calculator-total {
+      max-width: calc(
+				22.375rem + 7.1875 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (margin-bottom: clamp( 2rem , 7.625rem  +  -7.03125vw , 4.25rem )) {
+    .calculator-total__top:not(:last-child) {
+      margin-bottom: clamp( 2rem , 7.625rem  +  -7.03125vw , 4.25rem );
+    }
+}
+
+@supports not (margin-bottom: clamp( 2rem , 7.625rem  +  -7.03125vw , 4.25rem )) {
+    .calculator-total__top:not(:last-child) {
+      margin-bottom: calc(
+				4.25rem + -2.25 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (font-size: clamp( 1.25rem , 0.875rem  +  0.78125vw , 1.5rem )) {
+    .calculator-total__total-price {
+      font-size: clamp( 1.25rem , 0.875rem  +  0.78125vw , 1.5rem );
+    }
+}
+
+@supports not (font-size: clamp( 1.25rem , 0.875rem  +  0.78125vw , 1.5rem )) {
+    .calculator-total__total-price {
+      font-size: calc(
+				1.25rem + 0.25 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (padding-right: clamp( 1rem , -0.03125rem  +  2.1484375vw , 1.6875rem )) {
+    .calculator-total__item {
+      padding-right: clamp( 1rem , -0.03125rem  +  2.1484375vw , 1.6875rem );
+    }
+}
+
+@supports not (padding-right: clamp( 1rem , -0.03125rem  +  2.1484375vw , 1.6875rem )) {
+    .calculator-total__item {
+      padding-right: calc(
+				1rem + 0.6875 * (100vw - 48rem) / 32
+			);
+    }
+}
+
+@supports (font-size: clamp( 0.875rem , 0.6875rem  +  0.390625vw , 1rem )) {
+    .calculator-total__item-price {
+      font-size: clamp( 0.875rem , 0.6875rem  +  0.390625vw , 1rem );
+    }
+}
+
+@supports not (font-size: clamp( 0.875rem , 0.6875rem  +  0.390625vw , 1rem )) {
+    .calculator-total__item-price {
+      font-size: calc(
+				0.875rem + 0.125 * (100vw - 48rem) / 32
+			);
+    }
+}
+}
+
+@media (min-width: 47.99875em) and (max-width: 48em) {
+  .breadcrumbs > * {
+    font-size: 0.75rem;
+  }
+
+  .breadcrumbs > *:not(:last-child)::after {
+    font-size: 0.75rem;
+  }
+
+  .calculator__body {
+    padding-top: 2rem;
+  }
+
+  .calculator__body {
+    padding-bottom: 7.3125rem;
+  }
+
+  .calculator-form__line .select {
+    max-width: 10.5625rem;
+  }
+
+  .calculator-form__title {
+    font-size: 1rem;
+  }
+
+  .calculator-form__price input {
+    -ms-flex-preferred-size: 10.5625rem;
+        flex-basis: 10.5625rem;
+  }
+
+  .calculator-form__button-submit {
+    width: 11.5rem;
+  }
+
+  .calculator-total {
+    margin-left: 1.5rem;
+  }
+
+  .calculator-total {
+    max-width: 22.375rem;
+  }
+
+  .calculator-total__top:not(:last-child) {
+    margin-bottom: 4.25rem;
+  }
+
+  .calculator-total__total-price {
+    font-size: 1.25rem;
+  }
+
+  .calculator-total__item {
+    padding-right: 1rem;
+  }
+
+  .calculator-total__item-price {
+    font-size: 0.875rem;
+  }
 }
 
 @media (min-width: 20em) and (max-width: 86.9375em) {
+@supports (padding-right: clamp( 0.625rem , 0.5316293184rem  +  0.466853408vw , 0.9375rem )) {
+    .breadcrumbs > * {
+      padding-right: clamp( 0.625rem , 0.5316293184rem  +  0.466853408vw , 0.9375rem );
+    }
+}
+
+@supports not (padding-right: clamp( 0.625rem , 0.5316293184rem  +  0.466853408vw , 0.9375rem )) {
+    .breadcrumbs > * {
+      padding-right: calc(
+				0.625rem + 0.3125 * (100vw - 20rem) / 66.9375
+			);
+    }
+}
+
+@supports (margin-right: clamp( 0.625rem , 0.5316293184rem  +  0.466853408vw , 0.9375rem )) {
+    .breadcrumbs > * {
+      margin-right: clamp( 0.625rem , 0.5316293184rem  +  0.466853408vw , 0.9375rem );
+    }
+}
+
+@supports not (margin-right: clamp( 0.625rem , 0.5316293184rem  +  0.466853408vw , 0.9375rem )) {
+    .breadcrumbs > * {
+      margin-right: calc(
+				0.625rem + 0.3125 * (100vw - 20rem) / 66.9375
+			);
+    }
+}
+
 @supports (min-height: clamp( 5rem , 4.3277310924rem  +  3.3613445378vw , 7.25rem )) {
     .header__body {
       min-height: clamp( 5rem , 4.3277310924rem  +  3.3613445378vw , 7.25rem );
@@ -6499,34 +7137,6 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
     }
 }
 
-@supports (padding-top: clamp( 1.5rem , 0.7530345472rem  +  3.7348272642vw , 4rem )) {
-    .calculator__body {
-      padding-top: clamp( 1.5rem , 0.7530345472rem  +  3.7348272642vw , 4rem );
-    }
-}
-
-@supports not (padding-top: clamp( 1.5rem , 0.7530345472rem  +  3.7348272642vw , 4rem )) {
-    .calculator__body {
-      padding-top: calc(
-				1.5rem + 2.5 * (100vw - 20rem) / 66.9375
-			);
-    }
-}
-
-@supports (padding-bottom: clamp( 5rem , 4.3090569561rem  +  3.4547152194vw , 7.3125rem )) {
-    .calculator__body {
-      padding-bottom: clamp( 5rem , 4.3090569561rem  +  3.4547152194vw , 7.3125rem );
-    }
-}
-
-@supports not (padding-bottom: clamp( 5rem , 4.3090569561rem  +  3.4547152194vw , 7.3125rem )) {
-    .calculator__body {
-      padding-bottom: calc(
-				5rem + 2.3125 * (100vw - 20rem) / 66.9375
-			);
-    }
-}
-
 @supports (margin-bottom: clamp( 2rem , 1.7012138189rem  +  1.4939309057vw , 3rem )) {
     .calculator__breadcrumbs:not(:last-child) {
       margin-bottom: clamp( 2rem , 1.7012138189rem  +  1.4939309057vw , 3rem );
@@ -6579,6 +7189,90 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
     .calculator-form__actions {
       gap: calc(
 				1.5rem + 1.5 * (100vw - 20rem) / 66.9375
+			);
+    }
+}
+}
+
+@media (max-width: 86.9375em) and (min-width: 85.0625em) {
+  .header__body {
+    -webkit-column-gap: 9.75rem;
+       -moz-column-gap: 9.75rem;
+            column-gap: 9.75rem;
+  }
+
+  .header__content {
+    -webkit-column-gap: 3.5rem;
+       -moz-column-gap: 3.5rem;
+            column-gap: 3.5rem;
+  }
+
+  .header__actions {
+    gap: 3.5rem;
+  }
+
+  .menu__list {
+    -webkit-column-gap: 3.5rem;
+       -moz-column-gap: 3.5rem;
+            column-gap: 3.5rem;
+  }
+}
+
+@media (max-width: 86.9375em) and (min-width: 64em) and (max-width: 85.0625em) {
+@supports ((-moz-column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem )) or (column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem ))) {
+    .header__body {
+      -webkit-column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem );
+         -moz-column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem );
+              column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem );
+    }
+}
+
+@supports not ((-moz-column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem )) or (column-gap: clamp( 1.5rem , -23.5682492582rem  +  39.1691394659vw , 9.75rem ))) {
+    .header__body {
+      -webkit-column-gap: calc(
+				1.5rem + 8.25 * (100vw - 64rem) / 21.0625
+			);
+         -moz-column-gap: calc(
+				1.5rem + 8.25 * (100vw - 64rem) / 21.0625
+			);
+              column-gap: calc(
+				1.5rem + 8.25 * (100vw - 64rem) / 21.0625
+			);
+    }
+}
+
+@supports ((-moz-column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem )) or (column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem ))) {
+    .header__content {
+      -webkit-column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem );
+         -moz-column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem );
+              column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem );
+    }
+}
+
+@supports not ((-moz-column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem )) or (column-gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem ))) {
+    .header__content {
+      -webkit-column-gap: calc(
+				1.5rem + 2 * (100vw - 64rem) / 21.0625
+			);
+         -moz-column-gap: calc(
+				1.5rem + 2 * (100vw - 64rem) / 21.0625
+			);
+              column-gap: calc(
+				1.5rem + 2 * (100vw - 64rem) / 21.0625
+			);
+    }
+}
+
+@supports (gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem )) {
+    .header__actions {
+      gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem );
+    }
+}
+
+@supports not (gap: clamp( 1.5rem , -4.5771513353rem  +  9.4955489614vw , 3.5rem )) {
+    .header__actions {
+      gap: calc(
+				1.5rem + 2 * (100vw - 64rem) / 21.0625
 			);
     }
 }
@@ -6746,178 +7440,25 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 }
 }
 
-@media (min-width: 47.99875em) and (min-width: 48em) and (max-width: 80em) {
-@supports (max-width: clamp( 10.5625rem , -4.90625rem  +  32.2265625vw , 20.875rem )) {
-    .calculator-form__line .select {
-      max-width: clamp( 10.5625rem , -4.90625rem  +  32.2265625vw , 20.875rem );
+@media (min-width: 80em) and (min-width: 80em) and (max-width: 85.0625em) {
+@supports (padding-bottom: clamp( 7.3125rem , 39.8672839506rem  +  -38.2716049383vw , 9.25rem )) {
+    .calculator__body {
+      padding-bottom: clamp( 7.3125rem , 39.8672839506rem  +  -38.2716049383vw , 9.25rem );
     }
 }
 
-@supports not (max-width: clamp( 10.5625rem , -4.90625rem  +  32.2265625vw , 20.875rem )) {
-    .calculator-form__line .select {
-      max-width: calc(
-				10.5625rem + 10.3125 * (100vw - 48rem) / 32
-			);
-    }
-}
-
-@supports (font-size: clamp( 1rem , 0.625rem  +  0.78125vw , 1.25rem )) {
-    .calculator-form__title {
-      font-size: clamp( 1rem , 0.625rem  +  0.78125vw , 1.25rem );
-    }
-}
-
-@supports not (font-size: clamp( 1rem , 0.625rem  +  0.78125vw , 1.25rem )) {
-    .calculator-form__title {
-      font-size: calc(
-				1rem + 0.25 * (100vw - 48rem) / 32
-			);
-    }
-}
-
-@supports (flex-basis: clamp( 9.8125rem , 11.6875rem  +  -2.34375vw , 10.5625rem )) {
-    .calculator-form__price input {
-      -ms-flex-preferred-size: clamp( 9.8125rem , 11.6875rem  +  -2.34375vw , 10.5625rem );
-          flex-basis: clamp( 9.8125rem , 11.6875rem  +  -2.34375vw , 10.5625rem );
-    }
-}
-
-@supports not (flex-basis: clamp( 9.8125rem , 11.6875rem  +  -2.34375vw , 10.5625rem )) {
-    .calculator-form__price input {
-      -ms-flex-preferred-size: calc(
-				10.5625rem + -0.75 * (100vw - 48rem) / 32
-			);
-          flex-basis: calc(
-				10.5625rem + -0.75 * (100vw - 48rem) / 32
-			);
-    }
-}
-
-@supports (width: clamp( 11.5rem , 6.71875rem  +  9.9609375vw , 14.6875rem )) {
-    .calculator-form__button-submit {
-      width: clamp( 11.5rem , 6.71875rem  +  9.9609375vw , 14.6875rem );
-    }
-}
-
-@supports not (width: clamp( 11.5rem , 6.71875rem  +  9.9609375vw , 14.6875rem )) {
-    .calculator-form__button-submit {
-      width: calc(
-				11.5rem + 3.1875 * (100vw - 48rem) / 32
-			);
-    }
-}
-
-@supports (max-width: clamp( 22.375rem , 11.59375rem  +  22.4609375vw , 29.5625rem )) {
-    .calculator-total {
-      max-width: clamp( 22.375rem , 11.59375rem  +  22.4609375vw , 29.5625rem );
-    }
-}
-
-@supports not (max-width: clamp( 22.375rem , 11.59375rem  +  22.4609375vw , 29.5625rem )) {
-    .calculator-total {
-      max-width: calc(
-				22.375rem + 7.1875 * (100vw - 48rem) / 32
-			);
-    }
-}
-
-@supports (margin-bottom: clamp( 2rem , 7.625rem  +  -7.03125vw , 4.25rem )) {
-    .calculator-total__top:not(:last-child) {
-      margin-bottom: clamp( 2rem , 7.625rem  +  -7.03125vw , 4.25rem );
-    }
-}
-
-@supports not (margin-bottom: clamp( 2rem , 7.625rem  +  -7.03125vw , 4.25rem )) {
-    .calculator-total__top:not(:last-child) {
-      margin-bottom: calc(
-				4.25rem + -2.25 * (100vw - 48rem) / 32
-			);
-    }
-}
-
-@supports (font-size: clamp( 1.25rem , 0.875rem  +  0.78125vw , 1.5rem )) {
-    .calculator-total__total-price {
-      font-size: clamp( 1.25rem , 0.875rem  +  0.78125vw , 1.5rem );
-    }
-}
-
-@supports not (font-size: clamp( 1.25rem , 0.875rem  +  0.78125vw , 1.5rem )) {
-    .calculator-total__total-price {
-      font-size: calc(
-				1.25rem + 0.25 * (100vw - 48rem) / 32
-			);
-    }
-}
-
-@supports (padding-right: clamp( 1rem , -0.03125rem  +  2.1484375vw , 1.6875rem )) {
-    .calculator-total__item {
-      padding-right: clamp( 1rem , -0.03125rem  +  2.1484375vw , 1.6875rem );
-    }
-}
-
-@supports not (padding-right: clamp( 1rem , -0.03125rem  +  2.1484375vw , 1.6875rem )) {
-    .calculator-total__item {
-      padding-right: calc(
-				1rem + 0.6875 * (100vw - 48rem) / 32
-			);
-    }
-}
-
-@supports (font-size: clamp( 0.875rem , 0.6875rem  +  0.390625vw , 1rem )) {
-    .calculator-total__item-price {
-      font-size: clamp( 0.875rem , 0.6875rem  +  0.390625vw , 1rem );
-    }
-}
-
-@supports not (font-size: clamp( 0.875rem , 0.6875rem  +  0.390625vw , 1rem )) {
-    .calculator-total__item-price {
-      font-size: calc(
-				0.875rem + 0.125 * (100vw - 48rem) / 32
+@supports not (padding-bottom: clamp( 7.3125rem , 39.8672839506rem  +  -38.2716049383vw , 9.25rem )) {
+    .calculator__body {
+      padding-bottom: calc(
+				9.25rem + -1.9375 * (100vw - 80rem) / 5.0625
 			);
     }
 }
 }
 
-@media (min-width: 47.99875em) and (max-width: 48em) {
-  .calculator-form__line .select {
-    max-width: 10.5625rem;
-  }
-
-  .calculator-form__title {
-    font-size: 1rem;
-  }
-
-  .calculator-form__price input {
-    -ms-flex-preferred-size: 10.5625rem;
-        flex-basis: 10.5625rem;
-  }
-
-  .calculator-form__button-submit {
-    width: 11.5rem;
-  }
-
-  .calculator-total {
-    margin-left: 1.5rem;
-  }
-
-  .calculator-total {
-    max-width: 22.375rem;
-  }
-
-  .calculator-total__top:not(:last-child) {
-    margin-bottom: 4.25rem;
-  }
-
-  .calculator-total__total-price {
-    font-size: 1.25rem;
-  }
-
-  .calculator-total__item {
-    padding-right: 1rem;
-  }
-
-  .calculator-total__item-price {
-    font-size: 0.875rem;
+@media (min-width: 80em) and (max-width: 80em) {
+  .calculator__body {
+    padding-bottom: 9.25rem;
   }
 }
 
@@ -7079,100 +7620,6 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 }
 }
 
-@media (max-width: 47.99875em) and (min-width: 48em) {
-  .calculator-form__title {
-    font-size: 1rem;
-  }
-
-  .calculator-total__top:not(:last-child) {
-    margin-bottom: 4.25rem;
-  }
-
-  .calculator-total__total-price {
-    font-size: 1.25rem;
-  }
-
-  .calculator-total__item-title span {
-    font-size: 0.875rem;
-  }
-
-  .calculator-total__item-price {
-    font-size: 0.875rem;
-  }
-}
-
-@media (max-width: 47.99875em) and (min-width: 20em) and (max-width: 48em) {
-@supports (font-size: clamp( 0.875rem , 0.7857142857rem  +  0.4464285714vw , 1rem )) {
-    .calculator-form__title {
-      font-size: clamp( 0.875rem , 0.7857142857rem  +  0.4464285714vw , 1rem );
-    }
-}
-
-@supports not (font-size: clamp( 0.875rem , 0.7857142857rem  +  0.4464285714vw , 1rem )) {
-    .calculator-form__title {
-      font-size: calc(
-				0.875rem + 0.125 * (100vw - 20rem) / 28
-			);
-    }
-}
-
-@supports (margin-bottom: clamp( 3.75rem , 3.3928571429rem  +  1.7857142857vw , 4.25rem )) {
-    .calculator-total__top:not(:last-child) {
-      margin-bottom: clamp( 3.75rem , 3.3928571429rem  +  1.7857142857vw , 4.25rem );
-    }
-}
-
-@supports not (margin-bottom: clamp( 3.75rem , 3.3928571429rem  +  1.7857142857vw , 4.25rem )) {
-    .calculator-total__top:not(:last-child) {
-      margin-bottom: calc(
-				3.75rem + 0.5 * (100vw - 20rem) / 28
-			);
-    }
-}
-
-@supports (font-size: clamp( 1.125rem , 1.0357142857rem  +  0.4464285714vw , 1.25rem )) {
-    .calculator-total__total-price {
-      font-size: clamp( 1.125rem , 1.0357142857rem  +  0.4464285714vw , 1.25rem );
-    }
-}
-
-@supports not (font-size: clamp( 1.125rem , 1.0357142857rem  +  0.4464285714vw , 1.25rem )) {
-    .calculator-total__total-price {
-      font-size: calc(
-				1.125rem + 0.125 * (100vw - 20rem) / 28
-			);
-    }
-}
-
-@supports (font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem )) {
-    .calculator-total__item-title span {
-      font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem );
-    }
-}
-
-@supports not (font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem )) {
-    .calculator-total__item-title span {
-      font-size: calc(
-				0.75rem + 0.125 * (100vw - 20rem) / 28
-			);
-    }
-}
-
-@supports (font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem )) {
-    .calculator-total__item-price {
-      font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem );
-    }
-}
-
-@supports not (font-size: clamp( 0.75rem , 0.6607142857rem  +  0.4464285714vw , 0.875rem )) {
-    .calculator-total__item-price {
-      font-size: calc(
-				0.75rem + 0.125 * (100vw - 20rem) / 28
-			);
-    }
-}
-}
-
 @media (min-width: 61.99875em) and (min-width: 48em) and (max-width: 80em) {
 @supports (flex-basis: clamp( 6.5rem , 1.4375rem  +  10.546875vw , 9.875rem )) {
     .calculator-form__option {
@@ -7267,30 +7714,30 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 }
 
 @media (min-width: 80em) and (max-width: 85.0625em) {
-@supports (font-size: clamp( 0.875rem , -1.100308642rem  +  2.4691358025vw , 1rem )) {
-    .calculator-total__item-title span {
-      font-size: clamp( 0.875rem , -1.100308642rem  +  2.4691358025vw , 1rem );
-    }
-}
-
-@supports not (font-size: clamp( 0.875rem , -1.100308642rem  +  2.4691358025vw , 1rem )) {
-    .calculator-total__item-title span {
-      font-size: calc(
-				0.875rem + 0.125 * (100vw - 80rem) / 5.0625
-			);
-    }
-}
-
 @supports (font-size: clamp( 0.625rem , -1.350308642rem  +  2.4691358025vw , 0.75rem )) {
-    .calculator-total__item-body {
+    .calculator-total__item-clue {
       font-size: clamp( 0.625rem , -1.350308642rem  +  2.4691358025vw , 0.75rem );
     }
 }
 
 @supports not (font-size: clamp( 0.625rem , -1.350308642rem  +  2.4691358025vw , 0.75rem )) {
-    .calculator-total__item-body {
+    .calculator-total__item-clue {
       font-size: calc(
 				0.625rem + 0.125 * (100vw - 80rem) / 5.0625
+			);
+    }
+}
+
+@supports (font-size: clamp( 0.875rem , -1.100308642rem  +  2.4691358025vw , 1rem )) {
+    .calculator-total__item-title div {
+      font-size: clamp( 0.875rem , -1.100308642rem  +  2.4691358025vw , 1rem );
+    }
+}
+
+@supports not (font-size: clamp( 0.875rem , -1.100308642rem  +  2.4691358025vw , 1rem )) {
+    .calculator-total__item-title div {
+      font-size: calc(
+				0.875rem + 0.125 * (100vw - 80rem) / 5.0625
 			);
     }
 }
@@ -7422,8 +7869,12 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
     color: var(--uni-color-light-green);
   }
 
-  .select__title:hover .select__value svg {
-    fill: var(--uni-inputs-focus-text-color);
+  .select__title:hover .select__value::after {
+    background: url(../img/icons/arrow--open.svg);
+  }
+
+  .select__title:hover .select__content {
+    color: #141414;
   }
 
   .select__option:hover {
