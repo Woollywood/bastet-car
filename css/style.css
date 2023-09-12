@@ -6369,11 +6369,11 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
 
 @media (min-width: 120em) {
   .page__polygon_dark {
-    border-right-width: 120rem;
+    border-right-width: 160rem;
   }
 
   .page__polygon_dark {
-    border-bottom-width: 80.0625rem;
+    border-bottom-width: 100rem;
   }
 }
 

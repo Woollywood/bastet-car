@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Главная страница</title>
+		<meta charset="UTF-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<!-- <style>body{opacity: 0;}</style> -->
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+		<link rel="stylesheet" href="css/css-var.css" />
+		<link rel="stylesheet" href="css/style.css" />
+
+		<link rel="shortcut icon" href="favicon.ico" />
+		<!-- <meta name="robots" content="noindex, nofollow"> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Инициализация кастомного скролла, если у пользователя отключен JS -->
+		<noscript>
+			<style>
+				[data-simplebar] {
+					overflow: auto;
+				}
+			</style>
+		</noscript>
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__container _container">
+					<div class="header__body">
+						<a class="header__logo" href="#">
+							<img src="img/logo.svg" alt="logo-image" />
+						</a>
+						<div class="header__content">
+							<div class="header__menu menu">
+								<button class="menu__icon icon-menu" type="button" data-da=".header__actions, 767.98">
+									<span></span>
+								</button>
+								<nav class="menu__body">
+									<ul class="menu__list">
+										<li class="menu__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a href="#" class="menu__link">О компании</a>
+										</li>
+										<li class="menu__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a href="#" class="menu__link">Калькулятор</a>
+										</li>
+										<li class="menu__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a href="#" class="menu__link">Услуги</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div class="header__actions">
+								<div class="header__phone phone-header">
+									<a class="phone-header__icon" href="tel:89883562211">
+										<svg>
+											<use xlink:href="img/icons/icons.svg#phone"></use>
+										</svg>
+									</a>
+									<div class="phone-header__phones">
+										<a
+											class="phone-header__phone menu-item-hover menu-item-hover_hover-dark-background"
+											href="tel:89883562211"
+											>8 (988) 356 22 11</a
+										>
+										<a
+											class="phone-header__phone menu-item-hover menu-item-hover_hover-dark-background"
+											href="tel:89883563241"
+											>8 (988) 356 32 41</a
+										>
+									</div>
+								</div>
+								<a
+									class="header__button button-outstroke button-outstroke-hover-dark-background"
+									href="#"
+									data-da=".menu__body, 767.98"
+									data-fancybox
+									data-src="#callBackModal"
+									>Заказать звонок</a
+								>
+								<div
+									id="callBackModal"
+									aria-hidden="true"
+									class="callback-modal popup"
+									style="display: none">
+									<div class="popup__wrapper">
+										<div class="popup__content">
+											<div class="callback-modal__body">
+												<div
+													class="callback-modal__polygon-ibg callback-modal__polygon-ibg_dark">
+													<img
+														src="img/modal/polygon-dark.svg"
+														alt="polygon-background-dark" />
+												</div>
+												<div
+													class="callback-modal__polygon-ibg callback-modal__polygon-ibg_green">
+													<img
+														src="img/modal/polygon-green.svg"
+														alt="polygon-background-green" />
+												</div>
+
+												<div
+													class="callback-modal__polygon-ibg callback-modal__polygon-ibg_green-bottom">
+													<img
+														src="img/modal/polygon-green-bottom.svg"
+														alt="polygon-background-green" />
+												</div>
+												<div
+													class="callback-modal__polygon-ibg callback-modal__polygon-ibg_dark-bottom">
+													<img
+														src="img/modal/polygon-dark-bottom.svg"
+														alt="polygon-background-dark" />
+												</div>
+
+												<div class="callback-modal__body-inner">
+													<div class="callback-modal__title">
+														Оставьте ваш номер телефона и мы вам перезвоним
+													</div>
+													<form class="callback-modal__form" action="#" data-ajax>
+														<div class="input-wrapper">
+															<input
+																class="input input_white-background"
+																type="text"
+																placeholder="Ваше имя"
+																data-required />
+															<div class="input-error">Данные введены некорректно</div>
+														</div>
+														<div class="input-wrapper">
+															<input
+																class="input input_white-background tel"
+																type="tel"
+																data-required />
+															<div class="input-error">Данные введены некорректно</div>
+														</div>
+														<div class="callback-modal__private-policy">
+															Нажимая на кнопку вы даёте согласие на
+															<a href="#">обработку ваших персональных данных</a>
+														</div>
+														<button
+															class="callback-modal__button button-green-light button-green-light-hover-dark-background"
+															type="submit">
+															Отправить
+														</button>
+													</form>
+													<div class="callback-modal__body-sent">
+														<div class="callback-modal__title">Спасибо,</div>
+														<div class="callback-modal__title">
+															мы с вами свяжемся в ближайшее время !
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<main class="page">
+				<div class="page__polygon page__polygon_green" data-aos="fade-right"></div>
+				<div class="page__polygon page__polygon_dark" data-aos="fade-left"></div>
+				<section class="page__main-block main-block">
+					<div class="main-block__container _container">
+						<div class="main-block__body">
+							<div class="main-block__inner">
+								<div class="main-block__text-wrapper">
+									<div class="main-block__title-wrapper" data-aos="fade-right" data-aos-delay="400">
+										<h1 class="main-block__title">
+											<span>авто</span>мобили <br />
+											напрямую из <br />
+											<span class="main-block__title_next-line">США</span>
+										</h1>
+									</div>
+									<div
+										class="main-block__text-wrapper-inner"
+										data-aos="fade-right"
+										data-aos-delay="800">
+										<p class="main-block__text">
+											<span>«Bastet car»</span> имеет большой опыт работы в сфере продажи
+											автомобилей из США. Благодаря оптимальной схеме работы приобрела надежную
+											деловую репутацию.
+										</p>
+										<ul class="main-block__list">
+											<li class="main-block__item">Полный цикл услуг без посредников:</li>
+											<li class="main-block__item">Таможенная очистка</li>
+											<li class="main-block__item">Участие в аукционе</li>
+											<li class="main-block__item">Подбор и доставка</li>
+											<li class="main-block__item">Страхование</li>
+											<li class="main-block__item">Ремонт авто</li>
+										</ul>
+										<a class="button-white button-white-hover-green-light-background" href="#">
+											Получить предложения
+										</a>
+									</div>
+								</div>
+								<div class="main-block__media" data-aos="fade-left" data-aos-delay="300">
+									<div class="main-block__car">
+										<picture
+											><source srcset="img/main-block/car.webp" type="image/webp" />
+											<img src="img/main-block/car.png" alt="car-image"
+										/></picture>
+										<div class="main-block__circle-ibg">
+											<img src="img/main-block/circle.svg" alt="circle-image" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="page__popular-models popular-models">
+					<div class="popular-models__container _container">
+						<div class="popular-models__body">
+							<h2 class="popular-models__title">Самые популярные модели</h2>
+							<div class="popular-models__slider slider-models">
+								<div class="slider-models__body slider-models__swiper">
+									<div class="slider-models__slide slide-model">
+										<div class="slider-models__slide-front">
+											<div class="slide-model__image-ibg">
+												<picture
+													><source srcset="img/slider/01.webp" type="image/webp" />
+													<img src="img/slider/01.png" alt="car-image"
+												/></picture>
+											</div>
+											<div class="slide-model__content">
+												<div class="slide-model__name">Mazda CX5</div>
+												<div class="slide-model__price">3 000 000 ₽</div>
+												<a class="slide-model__more" href="#">Стоимость подробнее</a>
+												<div class="slide-model__description">
+													Модификация 5.7 АТ, мощность 375 л. с., расход в среднем 12,4 литра.
+													Разгон до 100 км/ч за 6.1 секунду.
+												</div>
+											</div>
+										</div>
+										<div class="slider-models__slide-back">
+											<div class="price-more__body">
+												<div class="price-more__content">
+													<div class="price-more__content-inner">
+														<ul class="price-more__list">
+															<li class="price-more__list-item">
+																<div class="price-more__text">Стоимость тс</div>
+																<div class="price-more__price">3 000 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Госпошлина</div>
+																<div class="price-more__price">200 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Таможенное оформление
+																</div>
+																<div class="price-more__price">500 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Транспортировка по территории РФ
+																</div>
+																<div class="price-more__price">300 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Транспортировка по территории США
+																</div>
+																<div class="price-more__price">400 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Страховка</div>
+																<div class="price-more__price">400 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Сборы аукциона</div>
+																<div class="price-more__price">200 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text price-more__text_general">
+																	Общая стоимость
+																</div>
+																<div
+																	class="price-more__price price-more__price_general">
+																	5 000 000 ₽
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="price-more__background-ibg">
+													<picture
+														><source srcset="img/modal/background.webp" type="image/webp" />
+														<img src="img/modal/background.jpg" alt="background-img"
+													/></picture>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="slider-models__slide slide-model">
+										<div class="slider-models__slide-front">
+											<div class="slide-model__image-ibg">
+												<picture
+													><source srcset="img/slider/02.webp" type="image/webp" />
+													<img src="img/slider/02.png" alt="car-image"
+												/></picture>
+											</div>
+											<div class="slide-model__content">
+												<div class="slide-model__name">Tesla</div>
+												<div class="slide-model__price">4 000 000 ₽</div>
+												<a class="slide-model__more" href="#">Стоимость подробнее</a>
+												<div class="slide-model__description">
+													Модификация 5.7 АТ, мощность 375 л. с., расход в среднем 12,4 литра.
+													Разгон до 100 км/ч за 6.1 секунду.
+												</div>
+											</div>
+										</div>
+										<div class="slider-models__slide-back">
+											<div class="price-more__body">
+												<div class="price-more__content">
+													<div class="price-more__content-inner">
+														<ul class="price-more__list">
+															<li class="price-more__list-item">
+																<div class="price-more__text">Стоимость тс</div>
+																<div class="price-more__price">3 000 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Госпошлина</div>
+																<div class="price-more__price">200 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Таможенное оформление
+																</div>
+																<div class="price-more__price">500 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Транспортировка по территории РФ
+																</div>
+																<div class="price-more__price">300 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Транспортировка по территории США
+																</div>
+																<div class="price-more__price">400 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Страховка</div>
+																<div class="price-more__price">400 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Сборы аукциона</div>
+																<div class="price-more__price">200 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text price-more__text_general">
+																	Общая стоимость
+																</div>
+																<div
+																	class="price-more__price price-more__price_general">
+																	5 000 000 ₽
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="price-more__background-ibg">
+													<picture
+														><source srcset="img/modal/background.webp" type="image/webp" />
+														<img src="img/modal/background.jpg" alt="background-img"
+													/></picture>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="slider-models__slide slide-model">
+										<div class="slider-models__slide-front">
+											<div class="slide-model__image-ibg">
+												<picture
+													><source srcset="img/slider/03.webp" type="image/webp" />
+													<img src="img/slider/03.png" alt="car-image"
+												/></picture>
+											</div>
+											<div class="slide-model__content">
+												<div class="slide-model__name">Dodge Challenger</div>
+												<div class="slide-model__price">5 000 000 ₽</div>
+												<a class="slide-model__more" href="#"> Стоимость подробнее </a>
+												<div class="slide-model__description">
+													Модификация 5.7 АТ, мощность 375 л. с., расход в среднем 12,4 литра.
+													Разгон до 100 км/ч за 6.1 секунду.
+												</div>
+											</div>
+										</div>
+										<div class="slider-models__slide-back">
+											<div class="price-more__body">
+												<div class="price-more__content">
+													<div class="price-more__content-inner">
+														<ul class="price-more__list">
+															<li class="price-more__list-item">
+																<div class="price-more__text">Стоимость тс</div>
+																<div class="price-more__price">3 000 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Госпошлина</div>
+																<div class="price-more__price">200 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Таможенное оформление
+																</div>
+																<div class="price-more__price">500 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Транспортировка по территории РФ
+																</div>
+																<div class="price-more__price">300 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Транспортировка по территории США
+																</div>
+																<div class="price-more__price">400 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Страховка</div>
+																<div class="price-more__price">400 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Сборы аукциона</div>
+																<div class="price-more__price">200 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text price-more__text_general">
+																	Общая стоимость
+																</div>
+																<div
+																	class="price-more__price price-more__price_general">
+																	5 000 000 ₽
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="price-more__background-ibg">
+													<picture
+														><source srcset="img/modal/background.webp" type="image/webp" />
+														<img src="img/modal/background.jpg" alt="background-img"
+													/></picture>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="slider-models__slide slide-model">
+										<div class="slider-models__slide-front">
+											<div class="slide-model__image-ibg">
+												<picture
+													><source srcset="img/slider/04.webp" type="image/webp" />
+													<img src="img/slider/04.png" alt="car-image"
+												/></picture>
+											</div>
+											<div class="slide-model__content">
+												<div class="slide-model__name">Tesla</div>
+												<div class="slide-model__price">4 000 000 ₽</div>
+												<a class="slide-model__more" href="#">Стоимость подробнее</a>
+												<div class="slide-model__description">
+													Модификация 5.7 АТ, мощность 375 л. с., расход в среднем 12,4 литра.
+													Разгон до 100 км/ч за 6.1 секунду.
+												</div>
+											</div>
+										</div>
+										<div class="slider-models__slide-back">
+											<div class="price-more__body">
+												<div class="price-more__content">
+													<div class="price-more__content-inner">
+														<ul class="price-more__list">
+															<li class="price-more__list-item">
+																<div class="price-more__text">Стоимость тс</div>
+																<div class="price-more__price">3 000 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Госпошлина</div>
+																<div class="price-more__price">200 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Таможенное оформление
+																</div>
+																<div class="price-more__price">500 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Транспортировка по территории РФ
+																</div>
+																<div class="price-more__price">300 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Транспортировка по территории США
+																</div>
+																<div class="price-more__price">400 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Страховка</div>
+																<div class="price-more__price">400 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Сборы аукциона</div>
+																<div class="price-more__price">200 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text price-more__text_general">
+																	Общая стоимость
+																</div>
+																<div
+																	class="price-more__price price-more__price_general">
+																	5 000 000 ₽
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="price-more__background-ibg">
+													<picture
+														><source srcset="img/modal/background.webp" type="image/webp" />
+														<img src="img/modal/background.jpg" alt="background-img"
+													/></picture>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="slider-models__slide slide-model">
+										<div class="slider-models__slide-front">
+											<div class="slide-model__image-ibg">
+												<picture
+													><source srcset="img/slider/05.webp" type="image/webp" />
+													<img src="img/slider/05.png" alt="car-image"
+												/></picture>
+											</div>
+											<div class="slide-model__content">
+												<div class="slide-model__name">Mazda CX5</div>
+												<div class="slide-model__price">3 000 000 ₽</div>
+												<a class="slide-model__more" href="#">Стоимость подробнее</a>
+												<div class="slide-model__description">
+													Модификация 5.7 АТ, мощность 375 л. с., расход в среднем 12,4 литра.
+													Разгон до 100 км/ч за 6.1 секунду.
+												</div>
+											</div>
+										</div>
+										<div class="slider-models__slide-back">
+											<div class="price-more__body">
+												<div class="price-more__content">
+													<div class="price-more__content-inner">
+														<ul class="price-more__list">
+															<li class="price-more__list-item">
+																<div class="price-more__text">Стоимость тс</div>
+																<div class="price-more__price">3 000 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Госпошлина</div>
+																<div class="price-more__price">200 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Таможенное оформление
+																</div>
+																<div class="price-more__price">500 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Транспортировка по территории РФ
+																</div>
+																<div class="price-more__price">300 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">
+																	Транспортировка по территории США
+																</div>
+																<div class="price-more__price">400 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Страховка</div>
+																<div class="price-more__price">400 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text">Сборы аукциона</div>
+																<div class="price-more__price">200 000 ₽</div>
+															</li>
+															<li class="price-more__list-item">
+																<div class="price-more__text price-more__text_general">
+																	Общая стоимость
+																</div>
+																<div
+																	class="price-more__price price-more__price_general">
+																	5 000 000 ₽
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="price-more__background-ibg">
+													<picture
+														><source srcset="img/modal/background.webp" type="image/webp" />
+														<img src="img/modal/background.jpg" alt="background-img"
+													/></picture>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="slider-models__controlls slider-controlls">
+									<div class="slider-controlls__dots"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="page__car-choice car-choice">
+					<div class="car-choice__polygon"></div>
+					<div class="car-choice__container _container">
+						<div class="car-choice__body">
+							<div class="car-choice__title-decor">
+								Bastet <br />
+								Car
+							</div>
+							<h2 class="car-choice__title">Поможем вам с выбором автомобиля</h2>
+							<div class="car-choice__body-inner">
+								<div class="car-choice__media" data-aos="fade-right">
+									<div class="car-choice__car">
+										<picture
+											><source srcset="img/car-choice/car.webp" type="image/webp" />
+											<img src="img/car-choice/car.png" alt="car-image"
+										/></picture>
+										<div class="car-choice__circle-ibg">
+											<img src="img/car-choice/circle.svg" alt="circle-svg" />
+										</div>
+									</div>
+								</div>
+								<div class="car-choice__content">
+									<div class="car-choice__form form-choice">
+										<div class="form-choice__title">
+											Специалист свяжется с вами в течение 15 минут
+										</div>
+										<form class="form-choice__form" action="#" data-ajax>
+											<div class="form-choice__fields">
+												<div class="form-choice__inputs">
+													<div class="input-wrapper">
+														<input class="input tel" type="tel" data-required />
+														<div class="input-error">Данные введены некорректно</div>
+													</div>
+													<div class="input-wrapper">
+														<input
+															class="input"
+															type="number"
+															placeholder="Максимальный бюджет, ₽"
+															data-required />
+														<div class="input-error">Данные введены некорректно</div>
+													</div>
+													<div class="input-wrapper">
+														<select data-required>
+															<option value="">Тип автомобиля</option>
+															<option value="2">Тип №1</option>
+															<option value="3">Тип №2</option>
+															<option value="4">Тип №3</option>
+															<option value="4">Тип №4</option>
+														</select>
+														<div class="input-error">Данные введены некорректно</div>
+													</div>
+												</div>
+												<textarea
+													class="form-choice__textarea input"
+													placeholder="Примечания"></textarea>
+											</div>
+											<div class="form-choice__private-policy">
+												Нажимая на кнопку вы даёте согласие на
+												<a href="#">обработку ваших персональных данных</a>
+											</div>
+											<button
+												class="form-choice__button button-white button-white-hover-green-light-background"
+												type="submit">
+												Получить предложения
+											</button>
+										</form>
+										<div class="form-choice__sent">
+											<div class="form-choice__title">Спасибо, форма отправлена.</div>
+											<div class="form-choice__title">
+												Специалист свяжется с вами в течение 15 минут !
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="page__purchase-stages purchase-stages">
+					<div class="purchase-stages__container _container">
+						<div class="purchase-stages__body">
+							<h2 class="purchase-stages__title">Этапы покупки автомобиля из сша</h2>
+							<div class="purchase-stages__content">
+								<div class="purchase-stages__items">
+									<div class="purchase-stages__col purchase-stages__col_left">
+										<div class="purchase-item purchase-item_left">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">1</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/01.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">Выбор автомобиля</div>
+												<div class="purchase-item__text">
+													Консультация от опытных специалистов по всем вопросам, связанным с
+													выборором автомобиля
+												</div>
+											</div>
+										</div>
+										<div class="purchase-item purchase-item_left">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">3</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/03.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">История автомобиля</div>
+												<div class="purchase-item__text">
+													Перед участием в аукционе мы проверяем всю историю данного
+													автомобиля
+												</div>
+											</div>
+										</div>
+										<div class="purchase-item purchase-item_left">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">5</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/05.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">Заключение контракта</div>
+												<div class="purchase-item__text">
+													В контракте определяется окончательная стоимость товара, этапы
+													оплаты, права и обязанности сторон
+												</div>
+											</div>
+										</div>
+										<div class="purchase-item purchase-item_left">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">7</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/07.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">Страхование</div>
+												<div class="purchase-item__text">
+													Осуществляется страхование груза ведущими местными страховыми
+													компаниями
+												</div>
+											</div>
+										</div>
+										<div class="purchase-item purchase-item_left">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">9</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/09.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">Таможенная очистка</div>
+												<div class="purchase-item__text">
+													Автомобиль выгружается из контейнера и проходит таможенное
+													оформление с помощью нашей брокерской организации
+												</div>
+											</div>
+										</div>
+										<div class="purchase-item purchase-item_left">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">11</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/11.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">Экспорт в Россию</div>
+												<div class="purchase-item__text">
+													Доставка в РФ и оформление всех сопутствующих документов для
+													постановки на учёт
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="purchase-stages__separator">
+										<div class="purchase-stages__separator-inner"></div>
+									</div>
+									<div class="purchase-stages__col purchase-stages__col_right">
+										<div class="purchase-item purchase-item_right">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">2</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/02.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">Депозитный платеж</div>
+												<div class="purchase-item__text">
+													10% от стоимости запланированной аукционной ставки, но не менее 1000
+													$. Залог подлежит возмещению до покупки автомобиля
+												</div>
+											</div>
+										</div>
+										<div class="purchase-item purchase-item_right">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">4</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/04.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">Участие в аукционе</div>
+												<div class="purchase-item__text">
+													Вы можете лично принять участие в аукционе онлайн или оффлайн и
+													совершить покупку на запланированную вами сумму
+												</div>
+											</div>
+										</div>
+										<div class="purchase-item purchase-item_right">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">6</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/06.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">Доставка по Америке</div>
+												<div class="purchase-item__text">
+													Транспортировка автомобиля с аукциона в порт, с предоставлением
+													дополнительных фотографий автомобиля покупателю
+												</div>
+											</div>
+										</div>
+										<div class="purchase-item purchase-item_right">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">8</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/08.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">Морская перевозка</div>
+												<div class="purchase-item__text">
+													Автомобиль загружается в контейнер под соответствующим номером, с
+													помощью которого покупатель отслеживает груз
+												</div>
+											</div>
+										</div>
+										<div class="purchase-item purchase-item_right">
+											<div class="purchase-item__body">
+												<div class="purchase-item__number">10</div>
+												<div class="purchase-item__icon">
+													<img src="img/purchase-stages/10.svg" alt="icon-svg" />
+												</div>
+												<div class="purchase-item__title">Выдача автомобиля</div>
+												<div class="purchase-item__text">
+													Растаможенный автомобиль продается вам на основании договора
+													купли-продажи
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="purchase-stages__col_mobile">
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">1</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/01.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">Выбор автомобиля</div>
+											<div class="purchase-item__text">
+												Консультация от опытных специалистов по всем вопросам, связанным с
+												выборором автомобиля
+											</div>
+										</div>
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">2</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/02.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">Депозитный платеж</div>
+											<div class="purchase-item__text">
+												10% от стоимости запланированной аукционной ставки, но не менее 1000 $.
+												Залог подлежит возмещению до покупки автомобиля
+											</div>
+										</div>
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">3</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/03.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">История автомобиля</div>
+											<div class="purchase-item__text">
+												Перед участием в аукционе мы проверяем всю историю данного автомобиля
+											</div>
+										</div>
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">4</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/04.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">Участие в аукционе</div>
+											<div class="purchase-item__text">
+												Вы можете лично принять участие в аукционе онлайн или оффлайн и
+												совершить покупку на запланированную вами сумму
+											</div>
+										</div>
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">5</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/05.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">Заключение контракта</div>
+											<div class="purchase-item__text">
+												В контракте определяется окончательная стоимость товара, этапы оплаты,
+												права и обязанности сторон
+											</div>
+										</div>
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">6</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/06.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">Доставка по Америке</div>
+											<div class="purchase-item__text">
+												Транспортировка автомобиля с аукциона в порт, с предоставлением
+												дополнительных фотографий автомобиля покупателю
+											</div>
+										</div>
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">7</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/07.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">Страхование</div>
+											<div class="purchase-item__text">
+												Осуществляется страхование груза ведущими местными страховыми компаниями
+											</div>
+										</div>
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">8</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/08.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">Морская перевозка</div>
+											<div class="purchase-item__text">
+												Автомобиль загружается в контейнер под соответствующим номером, с
+												помощью которого покупатель отслеживает груз
+											</div>
+										</div>
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">9</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/09.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">Таможенная очистка</div>
+											<div class="purchase-item__text">
+												Автомобиль выгружается из контейнера и проходит таможенное оформление с
+												помощью нашей брокерской организации
+											</div>
+										</div>
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">10</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/10.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">Выдача автомобиля</div>
+											<div class="purchase-item__text">
+												Растаможенный автомобиль продается вам на основании договора
+												купли-продажи
+											</div>
+										</div>
+										<div class="purchase-item__body">
+											<div class="purchase-item__number">11</div>
+											<div class="purchase-item__icon">
+												<img src="img/purchase-stages/11.svg" alt="icon-svg" />
+											</div>
+											<div class="purchase-item__title">Экспорт в Россию</div>
+											<div class="purchase-item__text">
+												Доставка в РФ и оформление всех сопутствующих документов для постановки
+												на учёт
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="page__calculator calculator">
+					<div class="calculator__polygon"></div>
+					<div class="calculator__container _container">
+						<div class="calculator__body">
+							<div class="calculator__media">
+								<div class="calculator__image-ibg">
+									<img src="img/calculator/calculator.svg" alt="calculator-svg" />
+								</div>
+							</div>
+							<div class="calculator__content">
+								<h2 class="calculator__title">Онлайн калькулятор</h2>
+								<div class="calculator__text">
+									С помощью нашего калькулятора Вы можете рассчитать стоимость вашего будущего
+									автомобиля прямо сейчас.
+								</div>
+								<div class="calculator__sub-text">
+									Если вы знаете, какой авто Вам нужен, просто заполните все поля и нажмите
+									«Рассчитать».
+								</div>
+								<a class="calculator__button button-white button-white-hover-dark-background" href="#"
+									>Рассчитать стоимость</a
+								>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="page__car-range car-range">
+					<div class="car-range__container _container">
+						<div class="car-range__body">
+							<div class="car-range__text-wrapper">
+								<h2 class="car-range__title">Ассортимент автомобилей</h2>
+								<div class="car-range__p-wrapper">
+									<p class="car-range__text">
+										Не важно какой суммой мы обладаем, мы всегда хотим совершить максимально
+										выгодную покупку.
+									</p>
+									<p class="car-range__text">
+										<span
+											>Авто даже с незначительными повреждениями в&nbsp;США продаются с хорошим
+											дисконтом.
+										</span>
+									</p>
+									<p class="car-range__text">
+										Даже учитывая доставку, таможенную очистку и ремонт авто, выходит дешевле
+										российского рынка на&nbsp;<span>20%, 30%, а то и 50% !</span>
+									</p>
+								</div>
+							</div>
+							<div class="car-range__media">
+								<div
+									class="car-range__price"
+									data-da=".car-range__text-wrapper, 767.98, 1"
+									data-aos="fade-left"
+									data-aos-delay="500">
+									до 1 500 000 ₽
+								</div>
+								<a class="car-range__look-more look-more" href="#">
+									<span>Посмотреть ещё</span>
+									<div class="look-more__line"><span></span></div>
+								</a>
+								<div class="car-range__image" data-aos="fade-left">
+									<picture
+										><source srcset="img/car-range/car.webp" type="image/webp" />
+										<img src="img/car-range/car.png" alt="car-image"
+									/></picture>
+									<div class="car-range__circle-ibg">
+										<img src="img/car-range/circle.svg" alt="circle-svg" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="page__for-business for-business">
+					<div class="for-business__container _container">
+						<div class="for-business__body">
+							<h2 class="for-business__title">ДЛЯ БИЗНЕСА</h2>
+							<div class="for-business__text-wrapper">
+								<div class="for-business__text-decor" data-aos="fade-right">
+									Bastet <br />
+									Car
+								</div>
+								<div class="for-business__text-blocks">
+									<div class="for-business__text-block">
+										<p>
+											Самые выгодные покупки совершаются тогда, когда мы не привязываемся к
+											конкретному авто, а просто играем выгодный лот.
+										</p>
+										<p>
+											<span
+												>Порой авто в пути купить выгоднее, <br />
+												чем заказывать его с материка.
+											</span>
+										</p>
+									</div>
+									<div class="for-business__text-block">
+										<p>
+											<span>Мы привлекаем инвесторов,</span> чтобы у наших клиентов была
+											возможность <span>выгодно</span> и в кратчайшие сроки приобрести авто,
+											которое уже направляется сюда.
+										</p>
+										<a
+											class="for-business__button button-green-light button-green-light-hover-dark-background"
+											href="#"
+											>Услуги для бизнеса</a
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			
+			<footer class="footer">
+				<div class="footer__background-ibg footer__background_green-light">
+					<img src="img/footer/polygon-green-light.svg" alt="polygon-image" />
+				</div>
+				<div class="footer__background-ibg footer__background_dark">
+					<img src="img/footer/polygon-dark.svg" alt="polygon-image" />
+				</div>
+				<div class="footer__top top-footer">
+					<div class="top-footer__container _container">
+						<div class="top-footer__body">
+							<a class="top-footer__logo" href="#">
+								<img src="img/logo.svg" alt="logo-image" />
+							</a>
+							<div class="top-footer__social footer-social">
+								<a class="footer-social__item" href="#">
+									<svg>
+										<use xlink:href="img/icons/icons.svg#instagram"></use>
+									</svg>
+								</a>
+								<a class="footer-social__item" href="#">
+									<svg>
+										<use xlink:href="img/icons/icons.svg#youtube"></use>
+									</svg>
+								</a>
+								<a class="footer-social__item" href="#">
+									<svg>
+										<use xlink:href="img/icons/icons.svg#whatsapp"></use>
+									</svg>
+								</a>
+								<a class="footer-social__item" href="#">
+									<svg>
+										<use xlink:href="img/icons/icons.svg#telegram"></use>
+									</svg>
+								</a>
+								<a class="footer-social__item" href="#">
+									<svg>
+										<use xlink:href="img/icons/icons.svg#vk"></use>
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer__center center-footer">
+					<div class="center-footer__container _container">
+						<div class="center-footer__body">
+							<div class="center-footer__content">
+								<nav class="center-footer__menu menu-footer">
+									<ul class="menu-footer__list">
+										<li
+											class="menu-footer__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a class="menu-footer__link" href="#">О компании</a>
+										</li>
+										<li
+											class="menu-footer__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a class="menu-footer__link" href="#">Калькулятор</a>
+										</li>
+										<li
+											class="menu-footer__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a class="menu-footer__link" href="#">Услуги</a>
+										</li>
+										<li
+											class="menu-footer__item menu-item-hover menu-item-hover_hover-dark-background">
+											<a class="menu-footer__link" href="#">Отзывы</a>
+										</li>
+									</ul>
+								</nav>
+								<div class="center-footer__info info-footer">
+									<div class="info-footer__phone-footer phone-footer">
+										<a class="phone-footer__icon" href="tel:89883562211">
+											<svg>
+												<use xlink:href="img/icons/icons.svg#phone"></use>
+											</svg>
+										</a>
+										<div class="phone-footer__phones">
+											<a
+												class="phone-footer__phone menu-item-hover menu-item-hover_hover-dark-background"
+												href="tel:89883562211"
+												>8 (988) 356 22 11</a
+											>
+											<a
+												class="phone-footer__phone menu-item-hover menu-item-hover_hover-dark-background"
+												href="tel:89883563241"
+												>8 (988) 356 32 41</a
+											>
+										</div>
+									</div>
+									<a class="info-footer__text-field" href="#">
+										<div class="info-footer__icon">
+											<svg>
+												<use xlink:href="img/icons/icons.svg#pin"></use>
+											</svg>
+										</div>
+										<span class="menu-item-hover menu-item-hover_hover-dark-background"
+											>г. Москва, ул. Лермонтовская, д. 36/1</span
+										>
+									</a>
+									<a class="info-footer__text-field" href="mailto:carrrop@mail.com">
+										<div class="info-footer__icon">
+											<svg>
+												<use xlink:href="img/icons/icons.svg#email"></use>
+											</svg>
+										</div>
+										<span class="menu-item-hover menu-item-hover_hover-dark-background"
+											>carrrop@mail.com</span
+										>
+									</a>
+								</div>
+							</div>
+							<div class="center-footer__form form-footer">
+								<p class="form-footer__text">Получить консультацию</p>
+								<form class="form-footer__form" action="#" data-ajax>
+									<div class="input-wrapper">
+										<input
+											class="input input_dark-background"
+											type="email"
+											placeholder="E-mail"
+											data-required />
+										<div class="input-error">Данные введены некорректно</div>
+									</div>
+									<button class="button-white button-white-hover-dark-background" type="submit">
+										Отправить
+									</button>
+								</form>
+								<div class="form-footer__sent">
+									<p class="form-footer__text">Спасибо !</p>
+									<p class="form-footer__sub-text">Менеджер свяжется с вами в ближайшее время</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer__bottom bottom-footer">
+					<div class="bottom-footer__container _container">
+						<div class="bottom-footer__body">
+							<a class="bottom-footer__copy" href="#"
+								>Политика обработки персональных данных © 2023 *Bastet car*</a
+							>
+							<a class="bottom-footer__icon" href="#">
+								<img src="img/footer/copi.svg" alt="image" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+		<script src="https://unpkg.com/imask"></script>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+
+		<script src="js/app.js"></script>
+	</body>
+</html>
